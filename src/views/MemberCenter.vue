@@ -1,20 +1,33 @@
 <script>
+import FuctionSelect from "../components/FunctionSelect.vue"
+import { RouterView } from 'vue-router';
+export default {
+    components: {
+        FuctionSelect
+    },
+    data() {
+        return {
+            title : "會員中心",      
+            member:[
+                {
+                    name:"會員資料修改",
+                    to:"/member-center/userInfo"
+                },
+                {
+                    name:"訂單查詢",
+                    to:"/member-center/userInfo"
+                }
+            ]
+        }
+    },
+}
 </script>
 
 <template>
     <div class="userInfo-group">
-        <div class="profile-pic">
-            <div class="account">
-                <h2>會員中心</h2>
-            </div>
-            <div class="pic">
-
-            </div>
-
-
-        </div>
-        <div class="userInfo-box">
-
+        <FuctionSelect :member="member" :title="title" />
+        <div class="user-box">
+            <RouterView/>
         </div>
     </div>
 </template>
@@ -27,34 +40,11 @@
     justify-content: center;
     align-items: center;
 
-    .profile-pic {
-        width: 30%;
-        height: 85%;
-        display: flex;
-        flex-direction: column;
-        justify-content: start;
-        align-items: center;
-        .pic {
-            width: 200px;
-            height: 200px;
-            background-color: red;
-            border-radius: 100px;
-        }
-
-        .account {
-            width: 50%;
-            height: 100px;
-            text-align: center;
-            font-size: 30px;
-            margin-bottom: 20px;
-        }
-
-    }
-
-    .userInfo-box {
-        width: 70%;
-        height: 500px;
-        background-color: red;
+    .user-box {
+        width: 100vw;
+        height: 100vh;
+        background-color: rgb(253, 253, 253);
+        border: 2px black solid;
     }
 }
 </style>

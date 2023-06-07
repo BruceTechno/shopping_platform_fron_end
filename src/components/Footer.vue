@@ -3,16 +3,17 @@
 
 <template>
         <footer>
-            
+            <p>this is footer</p>
         </footer>
 </template>
 
 <style lang="scss" scoped>
 footer{
     width: 100vw;
-    padding: 1rem 4rem;
-    background-color: #41b782;
+    height: 100px;
+    background-color: #E2C2B3;
     font-size: 2rem;
-
+    display: flex;
+    justify-content: center;align-content: center;
 }
 </style>

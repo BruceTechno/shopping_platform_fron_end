@@ -13,11 +13,17 @@ export default {
 
 <template>
     <HeaderView />
-
-    <div>
+    <div class="showData">
         <RouterView />
     </div>
-    
+    <FooterView/>
 </template>
 
-<style scoped></style>
+<style >
+body{
+    margin: 0;
+}
+.showData{
+    width: 100vw;
+}
+</style>

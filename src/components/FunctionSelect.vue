@@ -21,9 +21,8 @@ export default {
 .fuctionBox {
     width: 200px;
     height: 100vh;
-
     .fuction-group {
-        padding: 10px;
+        padding: 2rem;
         .category-link {
             display: block;
             text-decoration: none;

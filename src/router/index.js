@@ -2,6 +2,11 @@ import { createRouter, createWebHistory } from 'vue-router'
 import MemberCenter from "../views/MemberCenter.vue"
 import HomeView from "../views/HomeView.vue"
 import UserInfoView from "../views/UsreInfo.vue"
+import MyMarketView from "../views/MyMarket.vue"
+import CommodityView from "../views/Commodity.vue"
+import OrderView from "../views/OrderView.vue"
+
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -14,6 +19,20 @@ const router = createRouter({
     {
       path: '/my-market',
       name: 'my-market',
+      component : MyMarketView,
+      children:[
+        {
+          path: 'commodity',
+          component : CommodityView
+        },
+        {
+          path: 'orderview',
+          component : OrderView
+        }
+      ]
+
+      
+
     },
     {
       path: '/member-center',

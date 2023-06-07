@@ -44,7 +44,6 @@ export default {
         width: 100vw;
         height: 100vh;
         background-color: rgb(253, 253, 253);
-        border: 2px black solid;
     }
 }
 </style>

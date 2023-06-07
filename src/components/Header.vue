@@ -9,7 +9,7 @@ import { RouterLink } from 'vue-router';
                 <!-- LOGO 回首頁 -->
                 <div class="logo">
                     <RouterLink class="link" to="/">
-                        <i class="fa-solid fa-house"></i>
+                        <img src="../../pic/Dobby-1.jpg" alt="">
                     </RouterLink>
                 </div>
                 <!-- 搜尋 -->
@@ -24,39 +24,41 @@ import { RouterLink } from 'vue-router';
             <div class="function-group">
                 <!-- 我的賣場 -->
                 <div class="my-market">
-                    <RouterLink class="link" to="/my-market">我的賣場</RouterLink>
+                    <RouterLink class="link" to="/my-market/orderview">我的賣場</RouterLink>
                 </div>
                 <!-- 會員中心 -->
                 <div class="member-center">
-                    <RouterLink class="link" to="/member-center">會員中心</RouterLink>
+                    <RouterLink class="link" to="/member-center/userInfo">會員中心</RouterLink>
                 </div>
-                <!-- 註冊/登入 -->
-                <div class="login">
-                    <RouterLink class="link" to="/login">註冊/登入</RouterLink>
-                </div>
+
                 <!-- 購物車 -->
                 <div class="shopping-car">
                     <RouterLink class="link" to="/shopping-car">購物車</RouterLink>
+                </div>
+                <!-- 註冊/登入 -->
+                <div class="login">
+                    <RouterLink class="link" to="/login">登入</RouterLink>
                 </div>
             </div>
 
 
         </div>
         <div class="category">
-            <RouterLink class="category-link" to="/category/c1">分類1</RouterLink>
-            <RouterLink class="category-link" to="/category/c2">分類2</RouterLink>
-            <RouterLink class="category-link" to="/category/c3">分類3</RouterLink>
-            <RouterLink class="category-link" to="/category/c4">分類4</RouterLink>
-            <RouterLink class="category-link" to="/category">....所有分類</RouterLink>
+            <RouterLink class="category-link" to="/category/c1">3C產品</RouterLink>
+            <RouterLink class="category-link" to="/category/c2">配件飾品</RouterLink>
+            <RouterLink class="category-link" to="/category/c3">居家生活</RouterLink>
+            <RouterLink class="category-link" to="/category/c4">休閒用品</RouterLink>
+            <RouterLink class="category-link" to="/category">所有分類</RouterLink>
         </div>
     </header>
 </template>
 
 <style lang="scss" scoped>
 .wrapper {
-    padding: 2rem;
+    padding: 1rem;
     display: flex;
     justify-content: space-between;
+    align-items: end;
 
     .function-group {
         display: flex;
@@ -64,6 +66,18 @@ import { RouterLink } from 'vue-router';
 
     .search-group {
         display: flex;
+        align-items: center;
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            margin: 0 10px;
+
+            img {
+                width: 100%;
+                
+            }
+        }
 
         .search-box {
             position: relative;
@@ -75,15 +89,16 @@ import { RouterLink } from 'vue-router';
                 border: none;
             }
 
-            
 
-            i{
+
+            i {
                 position: absolute;
                 font-size: 20px;
-                right:10px;
-                top:12px;
-                cursor: pointer;  
-                &:hover{
+                right: 10px;
+                top: 8px;
+                cursor: pointer;
+
+                &:hover {
                     scale: 1.05;
                 }
             }
@@ -96,9 +111,8 @@ import { RouterLink } from 'vue-router';
 
 header {
     width: 100vw;
-
     background-color: #E2C2B3;
-    font-size: 2rem;
+    font-size: 20px;
 
     .category {
         width: 100vw;
@@ -135,5 +149,4 @@ header {
     &:hover {
         color: white;
     }
-}
-</style>
+}</style>

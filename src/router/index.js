@@ -6,6 +6,8 @@ import MyMarketView from "../views/MyMarket.vue"
 import CommodityView from "../views/Commodity.vue"
 import OrderView from "../views/OrderView.vue"
 import ShopCar from "../views/ShopCar.vue"
+import Login from "../views/Login.vue"
+
 
 
 
@@ -50,6 +52,7 @@ const router = createRouter({
     {
       path: '/login',
       name: 'login',
+      component :Login
     },
     {
       path: '/shopping-car',

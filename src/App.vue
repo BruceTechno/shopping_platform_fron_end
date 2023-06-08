@@ -24,6 +24,10 @@ body{
     margin: 0;
     min-width: 1270px;
 }
+#app{
+    min-width: 1270px;
+
+}
 .showData{
     width: 80vw;
     height: 100vh;

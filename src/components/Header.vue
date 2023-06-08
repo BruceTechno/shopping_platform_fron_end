@@ -59,7 +59,7 @@ import { RouterLink } from 'vue-router';
     display: flex;
     justify-content: space-between;
     align-items: end;
-
+    min-width: 1270px;
     .function-group {
         display: flex;
     }
@@ -116,9 +116,11 @@ header {
     width: 100vw;
     background-color: #E2C2B3;
     font-size: 20px;
+    min-width: 1270px;
 
     .category {
         width: 100vw;
+        min-width: 1270px;
         padding: 10px 0;
         display: flex;
         justify-content: space-around;

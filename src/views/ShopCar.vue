@@ -1,4 +1,17 @@
 <script>
+export default{
+    mounted() {
+        fetch("http://localhost:8080/get_shopping_car_info",{
+            credentials:'include',
+            method: "GET",
+        })
+        .then(res => res.json())
+                .then(data => {
+                    console.dir(data)
+                })
+                
+    }
+}
 </script>
 
 <template>

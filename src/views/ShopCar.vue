@@ -1,4 +1,22 @@
 <script>
+export default {
+    data() {
+        return {
+            fetchData: null
+        }
+    },
+    mounted() {
+        fetch("http://localhost:8080/get_shopping_car_info",{
+            credentials:'include',
+            method: "GET",
+        })
+        .then(res => res.json())
+                .then(data => {
+                    console.dir(data)
+                })
+                
+    }
+}
 </script>
 
 <template>
@@ -8,13 +26,12 @@
         </div>
         <div class="shop-item">
             <div class="product-box">
-                <div class="product">
-                    <h2>這裡用v-for 動態產生 下面幾組商品</h2>
-                </div>
 
                 <div class="product">
                     <div class="squarebox">
-                        <div class="square"> </div>
+                        <div class="square">
+                            <input type="checkbox">
+                        </div>
                     </div>
                     <div class="produt-info">
                         <div class="imgbox">
@@ -23,18 +40,12 @@
                         <div class="infobox">
                             <h2>品名</h2>
                             <h2>name{{ name }}</h2>
-                            
+
                         </div>
                     </div>
                 </div>
 
-                <div class="product">
 
-                </div>
-
-                <div class="product">
-
-                </div>
             </div>
 
             <div class="money-box">
@@ -103,11 +114,7 @@
 
             .squarebox {
                 width: 80%;
-                .square {
-                    width: 50px;
-                    height: 50px;
-                    background-color: gray;
-                }
+
             }
 
 
@@ -116,7 +123,8 @@
                 height: 70%;
                 background-color: yellow;
                 display: flex;
-                .imgbox{
+
+                .imgbox {
                     width: 120px;
                     height: 120px;
                     background-color: aqua;
@@ -185,4 +193,5 @@
             }
         }
     }
-}</style>
+}
+</style>

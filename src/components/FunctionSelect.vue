@@ -19,7 +19,7 @@ export default {
 
 <style lang="scss" scoped>
 .fuctionBox {
-    width: 200px;
+    width: 300px;
     height: 100vh;
     .fuction-group {
         padding: 2rem;

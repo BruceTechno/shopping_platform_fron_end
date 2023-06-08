@@ -19,11 +19,13 @@ export default {
     <FooterView/>
 </template>
 
-<style >
+<style lang="scss" >
 body{
     margin: 0;
 }
 .showData{
-    width: 100vw;
+    width: 80vw;
+    height: 100vh;
+    margin: 0 auto;
 }
 </style>

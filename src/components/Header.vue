@@ -33,7 +33,7 @@ import { RouterLink } from 'vue-router';
 
                 <!-- 購物車 -->
                 <div class="shopping-car">
-                    <RouterLink class="link" to="/shopping-car">購物車</RouterLink>
+                    <RouterLink class="link" to="/shopping-car"><i class="fa-solid fa-cart-shopping"></i></RouterLink>
                 </div>
                 <!-- 註冊/登入 -->
                 <div class="login">
@@ -81,9 +81,12 @@ import { RouterLink } from 'vue-router';
 
         .search-box {
             position: relative;
-
+            border: none;
+            i{
+                border: none;
+            }
             .input-style {
-                padding: 5px;
+                padding: 5px 40px 5px 5px  ;
                 font-size: 20px;
                 border-radius: 10px;
                 border: none;
@@ -145,7 +148,9 @@ header {
     cursor: pointer;
     transition: 0.3s;
     margin: 0 1rem;
-
+    i{
+        font-size: 25px;
+    }
     &:hover {
         color: white;
     }

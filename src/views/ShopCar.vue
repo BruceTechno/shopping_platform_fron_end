@@ -20,11 +20,35 @@
                         <div class="imgbox">
                             <img src="" alt="pic">
                         </div>
-                        <div class="infobox">
-                            <h2>品名</h2>
-                            <h2>name{{ name }}</h2>
-                            
+                        <div class="infogroup">
+                            <div class="infobox">
+                                <h2>商品</h2>
+                                <h2>name{{ name }}</h2>
+                                <select id="day" class="form-select" aria-label="Default select example">
+                                    <option value="一">一</option>
+                                    <option value="二">二</option>
+                                    <option value="三">三</option>
+                                    <option value="四">四</option>
+                                    <option value="五">五</option>
+                                    <option value="六">六</option>
+                                    <option value="七">七</option>
+                                </select>
+                                <p>$1231</p>
+                                <button type="button">取消</button>
+                            </div>
+                            <div class="selectgroup">
+                                <select id="day" class="form-select" aria-label="Default select example">
+                                    <option value="一">一</option>
+                                    <option value="二">二</option>
+                                    <option value="三">三</option>
+                                    <option value="四">四</option>
+                                    <option value="五">五</option>
+                                    <option value="六">六</option>
+                                    <option value="七">七</option>
+                                </select>
+                            </div>
                         </div>
+
                     </div>
                 </div>
 
@@ -39,6 +63,7 @@
 
             <div class="money-box">
                 <div class="money">
+
                     <div class="money-title">
                         <h2>訂單摘要</h2>
                     </div>
@@ -67,12 +92,14 @@
 
 
 <style lang="scss" scoped>
-.shop-item {
-    display: flex;
-    height: 90%;
-}
-
 .shop-car {
+    min-width: 1270px;
+
+    .shop-item {
+        display: flex;
+        height: 90%;
+    }
+
     width: 100%;
     height: 100%;
 
@@ -87,7 +114,6 @@
 
     .product-box {
         width: 50%;
-        scrollbar-width: none;
         overflow: auto;
 
         .product {
@@ -103,6 +129,7 @@
 
             .squarebox {
                 width: 80%;
+
                 .square {
                     width: 50px;
                     height: 50px;
@@ -114,12 +141,50 @@
             .produt-info {
                 width: 80%;
                 height: 70%;
+                margin: 0 auto;
                 background-color: yellow;
                 display: flex;
-                .imgbox{
+                align-items: center;
+                justify-content: start;
+
+                .imgbox {
                     width: 120px;
                     height: 120px;
+                    margin-left: 20px;
                     background-color: aqua;
+                }
+                .selectgroup{
+                    select{
+                        margin: 0;
+                        margin-right: 5px;
+                        width: 50px;
+                        
+                        padding: 0;
+                    }
+                }
+                .infobox {
+                    display: flex;
+                    align-items: center;
+
+                    // justify-content: start;
+                    h2,
+                    p {
+                        width: 50px;
+                        font-size: 12px;
+                        margin: 0;
+                        text-align: center;
+                    }
+
+                    button {
+                        width: 50px;
+                    }
+
+                    .form-select {
+                        width: 50px;
+                        margin: 0;
+                        padding: 0;
+                    }
+
                 }
             }
         }
@@ -131,9 +196,9 @@
         .money {
             width: 400px;
             height: 400px;
-            position: fixed;
             top: 50;
             right: 200px;
+            margin: 0 auto;
 
             .btn {
                 margin-top: 50px;

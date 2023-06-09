@@ -7,10 +7,8 @@ import CommodityView from "../views/Commodity.vue"
 import OrderView from "../views/OrderView.vue"
 import ShopCar from "../views/ShopCar.vue"
 import Login from "../views/Login.vue"
-
-
-
-
+import Checkout from "../views/Checkout.vue"
+import CarView from "../views/CarView.vue"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -23,20 +21,17 @@ const router = createRouter({
     {
       path: '/my-market',
       name: 'my-market',
-      component : MyMarketView,
-      children:[
+      component: MyMarketView,
+      children: [
         {
           path: 'commodity',
-          component : CommodityView
+          component: CommodityView
         },
         {
           path: 'orderview',
-          component : OrderView
+          component: OrderView
         }
       ]
-
-      
-
     },
     {
       path: '/member-center',
@@ -45,19 +40,26 @@ const router = createRouter({
       children: [
         {
           path: 'userInfo',
-          component : UserInfoView
+          component: UserInfoView
         }
       ]
     },
     {
       path: '/login',
       name: 'login',
-      component :Login
+      component: Login
     },
     {
       path: '/shopping-car',
       name: 'shopping-car',
-      component :ShopCar
+      component: ShopCar,
+      children: [
+        {
+          path:'carview',
+          component : CarView
+        }
+      ]
+
     },
     {
       path: '/category',
@@ -76,11 +78,13 @@ const router = createRouter({
           path: 'c4'
         }
       ]
+    },
+    {
+      path : '/checkout:propText',
+      name :'checkout',
+      component : Checkout,
+      props : true
     }
-
-
-
-
   ]
 })
 

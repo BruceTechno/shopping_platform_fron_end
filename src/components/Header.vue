@@ -33,7 +33,7 @@ import { RouterLink } from 'vue-router';
 
                 <!-- 購物車 -->
                 <div class="shopping-car">
-                    <RouterLink class="link" to="/shopping-car"><i class="fa-solid fa-cart-shopping"></i></RouterLink>
+                    <RouterLink class="link" to="/shopping-car/carview"><i class="fa-solid fa-cart-shopping"></i></RouterLink>
                 </div>
                 <!-- 註冊/登入 -->
                 <div class="login">

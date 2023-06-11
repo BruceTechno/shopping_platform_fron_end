@@ -12,12 +12,12 @@
 
         <span class="account">
             <p>帳號
-                <input type="text" v-model="account">
+                <input type="text" class="account-input" v-model="account">
             </p>
         </span>
         <span class="pwd">
             <p>密碼
-                <input type="password" v-model="pwd">
+                <input type="password" class="pwd-input" v-model="pwd">
             </p>
         </span>
 
@@ -31,6 +31,7 @@
                 <div class="register">
 
                     <RouterLink to="/register">
+                        
                         <button type="button" RouterLink to="/register">註冊</button>
                     </RouterLink>
                 </div>
@@ -42,7 +43,7 @@
 
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 
     .cube{
 
@@ -55,30 +56,51 @@
 
     }
 
-    .cube .in-cube{
+        .in-cube{
 
         justify-content: center;
         align-items: center;
     }
+        .account{
+            position: relative;
 
-    h1{
-        text-align: center;
+            .account-input{
+                padding: 5px;
+                font-size: 20px;
+                border-radius: 10px;
+                border: none;
+            }
+        }
         
-    }
-    p{
-        font-size: 20px;
-    }
+        .pwd{
+            position: relative;
+
+            .pwd-input{
+                padding: 5px;
+                font-size: 20px;
+                border-radius: 10px;
+                border: none;
+            }
+        }
+
+        h1{
+            text-align: center;
+            
+        }
+        p{
+            font-size: 20px;
+        }
 
  
-    .cube .in-cube .btn-area{
+        .btn-area{
         display: flex;
         justify-content: right;
         margin-right: 30px;
     }
 
-    .cube .in-cube .btn-area .login{
-        margin-right: 20px;
-    }
+            .login{
+            margin-right: 20px;
+            }   
 
     /* .cube .in-cube .btn-area .register{
         margin-left: 20px;

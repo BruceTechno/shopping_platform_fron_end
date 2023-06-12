@@ -5,21 +5,28 @@ export default {
     components: {
         FuctionSelect
     },
+    methods: {
+       
+    },
     data() {
         return {
-            title : "會員中心",      
-            member:[
+            title: "會員中心",
+            member: [
                 {
-                    name:"會員資料修改",
-                    to:"/member-center/userInfo"
+                    name: "會員資料修改",
+                    to: "/member-center/userInfo"
                 },
                 {
-                    name:"訂單查詢",
-                    to:"/member-center/userInfo"
+                    name: "訂單查詢",
+                    to: "/member-center/orderInfo"
                 }
-            ]
+            ],
+           
         }
     },
+    mounted() {
+
+    }
 }
 </script>
 
@@ -27,7 +34,7 @@ export default {
     <div class="userInfo-group">
         <FuctionSelect :member="member" :title="title" />
         <div class="user-box">
-            <RouterView/>
+            <RouterView />
         </div>
     </div>
 </template>

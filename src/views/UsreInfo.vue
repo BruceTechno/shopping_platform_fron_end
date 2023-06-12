@@ -1,4 +1,165 @@
 <script>
+
+export default {
+   data() {
+      return {
+         userInfo: {
+            name: null,
+            pwd: null,
+            address: null,
+            phone: null
+         },
+         nameUp: false,
+         pwdUp: false,
+         addressUp: false,
+         phoneUp: false,
+         oldValue: null,
+         isUpdate: false,
+         isActive: false
+      }
+   },
+   methods: {
+      getUser() {
+         let body = {
+
+         }
+         fetch("http://localhost:8080/get_user_info", {
+            method: "POST",
+            headers: {
+               "Content-Type": "application/json",
+            },
+            body: JSON.stringify(body),
+            credentials: "include"
+         })
+            .then(res => res.json())
+            .then(data => {
+               console.log(data);
+               this.userInfo.name = data.user.name;
+               this.userInfo.pwd = data.user.pwd
+               this.userInfo.address = data.user.address;
+               this.userInfo.phone = data.user.phone;
+               console.log(this.userInfo);
+            })
+      },
+      update(value) {
+
+         this.isUpdate = true;
+
+         switch (value) {
+            case "name":
+               this.oldValue = this.userInfo.name;
+               this.nameUp = !this.nameUp;
+               return;
+            case "pwd":
+               this.oldValue = this.userInfo.pwd;
+
+               this.pwdUp = !this.pwdUp;
+               return;
+            case "address":
+               this.oldValue = this.userInfo.address;
+
+               this.addressUp = !this.addressUp;
+               return;
+            case "phone":
+               this.oldValue = this.userInfo.phone;
+
+               this.phoneUp = !this.phoneUp;
+               return;
+         }
+
+      },
+      save(value) {
+         let body = {};
+         let str = "http://localhost:8080/"
+         switch (value) {
+            case "name":
+               this.nameUp = !this.nameUp;
+               this.isUpdate = false;
+               body = {
+                  "name": this.userInfo.name
+               }
+               str += "update_name";
+               break;
+            case "pwd":
+               this.pwdUp = !this.pwdUp;
+               this.isUpdate = false;
+               body = {
+                  "pwd": this.userInfo.pwd
+               }
+               str += "update_Pwd";
+
+               break;
+            case "address":
+               this.addressUp = !this.addressUp;
+               this.isUpdate = false;
+               body = {
+                  "address": this.userInfo.address
+               }
+               str += "update_address";
+
+               break;
+            case "phone":
+               this.phoneUp = !this.phoneUp;
+               this.isUpdate = false;
+               body = {
+                  "phone": this.userInfo.phone
+               }
+               str += "update_phone";
+
+               break;
+         }
+         console.log(body);
+         console.log(str);
+         fetch(str, {
+            method: "POST",
+            headers: {
+               "Content-Type": "application/json",
+            },
+            body: JSON.stringify(body),
+            credentials: "include"
+         })
+            .then(res => res.json())
+            .then(data => {
+               console.log(data);
+               if (data.message == "Successful!!") {
+                  alert("修改成功");
+                  location.reload();
+               }
+               else {
+                  alert("資料格式錯誤");
+                  location.reload();
+               }
+            })
+      },
+      cancel(value) {
+         switch (value) {
+            case "name":
+               this.nameUp = !this.nameUp;
+               this.userInfo.name = this.oldValue;
+               this.isUpdate = false;
+               return;
+            case "pwd":
+               this.pwdUp = !this.pwdUp;
+               this.userInfo.pwd = this.oldValue;
+               this.isUpdate = false;
+               return;
+            case "address":
+               this.addressUp = !this.addressUp;
+               this.userInfo.address = this.oldValue;
+               this.isUpdate = false;
+               return;
+            case "phone":
+               this.phoneUp = !this.phoneUp;
+               this.userInfo.phone = this.oldValue;
+               this.isUpdate = false;
+               return;
+         }
+      }
+   },
+   mounted() {
+      this.getUser();
+   }
+}
 </script>
 
 <template>
@@ -8,27 +169,51 @@
       </div>
    </div>
    <div class="userInfoBox">
-      <div class="account">
-         <label for="account">帳號</label>
-         <input type="text" id="account">
-         <button type="button">修改</button>
+      <div class="name">
+         <label for="name">名稱</label>
+         <input v-if="nameUp" type="text" id="name" v-model="userInfo.name">
+         <input v-else disabled="disabled" type="text" id="name" v-model="userInfo.name">
+         <div v-if="nameUp" class="btngroup">
+            <button type="button" @click="save('name')">儲存</button>
+            <button type="button" @click="cancel('name')">取消</button>
+         </div>
+         <button v-else-if="!isUpdate" type="button" @click="update('name')">修改</button>
       </div>
       <div class="pwd">
          <label for="pwd">密碼</label>
-         <input type="text" id="pwd">
-         <button type="button">修改</button>
+         <div v-if="pwdUp" class="pwdbox">
+            <input v-bind:type="isActive ? 'text' : 'password'" id="pwd" v-model="userInfo.pwd">
+            <i v-bind:class="isActive ? 'fa-regular fa-eye-slash' : 'fa-regular fa-eye'" @click="isActive = !isActive"></i>
+         </div>
+         <input v-else disabled="disabled" type="password" id="pwd" v-model="userInfo.pwd">
+
+         <div v-if="pwdUp" class="btngroup">
+            <button type="button" @click="save('pwd')">儲存</button>
+            <button type="button" @click="cancel('pwd')">取消</button>
+         </div>
+         <button v-else-if="!isUpdate" type="button" @click="update('pwd')">修改</button>
 
       </div>
       <div class="address">
          <label for="address">地址</label>
-         <input type="text" id="address">
-         <button type="button">修改</button>
+         <input v-if="addressUp" type="address" id="address" v-model="userInfo.address">
+         <input v-else disabled="disabled" type="address" id="address" v-model="userInfo.address">
+         <div v-if="addressUp" class="btngroup">
+            <button type="button" @click="save('address')">儲存</button>
+            <button type="button" @click="cancel('address')">取消</button>
+         </div>
+         <button v-else-if="!isUpdate" type="button" @click="update('address')">修改</button>
 
       </div>
       <div class="phone">
          <label for="phone">電話</label>
-         <input type="text" id="phone">
-         <button type="button">修改</button>
+         <input v-if="phoneUp" type="tel" id="phone" v-model="userInfo.phone">
+         <input v-else disabled="disabled" type="tel" id="phone" v-model="userInfo.phone">
+         <div v-if="phoneUp" class="btngroup">
+            <button type="button" @click="save('phone')">儲存</button>
+            <button type="button" @click="cancel('phone')">取消</button>
+         </div>
+         <button v-else-if="!isUpdate" type="button" @click="update('phone')">修改</button>
 
       </div>
 
@@ -42,6 +227,7 @@
    display: flex;
    justify-content: center;
    align-items: center;
+
    .pic {
       width: 150px;
       height: 150px;
@@ -58,10 +244,36 @@
    justify-content: start;
    align-items: center;
    font-size: 20px;
-   label{
+
+   .name,
+   .pwd,
+   .address,
+   .phone {
+      display: flex;
+      justify-content: start;
+      align-items: center;
+
+      .pwdbox {
+         position: relative;
+
+         input {
+            padding-right: 40px;
+         }
+
+         i {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            cursor: pointer;
+         }
+      }
+   }
+
+   label {
       font-weight: bold;
    }
-   input{
+
+   input {
       font-size: 20px;
       border-radius: 10px;
       border: none;
@@ -69,7 +281,7 @@
       margin: 10px 10px;
    }
 
-   button{
+   button {
       border: none;
       background-color: #F7F3F5;
       font-size: 18px;
@@ -79,13 +291,15 @@
       transition: 0.7s;
       cursor: pointer;
       margin: 0 20px;
-      &:hover{
-         background-color:#d0cfd0 ;
-         
+
+      &:hover {
+         background-color: #d0cfd0;
+
       }
-      &:active{
-            scale: 1.05;
-         }
+
+      &:active {
+         scale: 1.05;
+      }
    }
 }
 </style>

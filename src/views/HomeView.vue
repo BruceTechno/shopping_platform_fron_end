@@ -39,10 +39,10 @@
 </template>
 
 <style lang="scss" scoped>
-
-.carousel{
-    min-width: 1270px;
+#carouselExampleIndicators{
+    width: 100%;
 }
+
 .carousel-item {
     img {
         height: 300px;

@@ -43,33 +43,33 @@ export default {
 
             .then(function(response){
                 // if(!response.ok){
-
                 //     throw new Error('Error accrued: ' + response.status);
-        
                 // }
+                
                 return response.json();
             })
             
             // 檢查後臺程式: Response的data裡message項目要是沒有"successful"
             // 的結果就報錯並結束流程
-            .then(function(data){
+            .then((data) => {
 
                 if(data.message !== "Successful!!"){
                     
-                    alert("後臺系統錯誤!");
+                    alert("登入系統錯誤!");
+                    console.log(data);
                     return;
                 }
                 console.log(data);
                 this.isLogin = !this.isLogin;
             })
 
-            .catch(function(error){
+            // .catch(function(error){
 
-                console.log('Login Error', error);
+            //     console.log('Login Error', error);
 
-                alert("後台系統錯誤!");
+            //     alert("後台系統錯誤!");
 
-            })
+            // })
 
 
 

@@ -73,6 +73,7 @@ export default{
                 //     // throw new Error('Error accrued: ' + response.status);
                 //     alert("後臺系統出錯!");
                 // }
+
                 // 取得後端程式的回應
                 return response.json();
             })
@@ -82,7 +83,7 @@ export default{
                 // 檢查後臺程式: Response的data裡message項目要是沒有"successful"
                 // 的結果就報錯並結束流程
                 if(data.message !== "Successful!!"){
-                    alert("後臺系統錯誤!");
+                    alert("註冊系統錯誤!");
                     console.log(data);
                     return ;
                 }

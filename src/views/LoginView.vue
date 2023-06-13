@@ -1,4 +1,89 @@
 <script>
+import Info from "../components/LoginMessage.vue";
+export default {
+    components:{
+        Info
+        
+    },
+
+    data() {
+
+        return {
+            account: null,
+            pwd: null,
+            isLogin: false,
+        }
+    }, 
+
+    methods:{
+        login() {
+
+            const body = {
+                "account": this.account,
+                "pwd": this.pwd,
+            }
+
+            console.log(body);
+
+            fetch("http://localhost:8080/login", {
+
+                method:"POST",
+                headers:{
+                    // 設置成json格式
+                    'Content-Type': 'application/json',
+                },
+
+                // 將 JS值或對象轉換為: JSON 字符串
+                body: JSON.stringify(body), 
+
+                // 確實取得Jsession: Http Session通訊用
+                credentials: 'include'
+
+            })
+
+            .then(function(response){
+                // if(!response.ok){
+
+                //     throw new Error('Error accrued: ' + response.status);
+        
+                // }
+                return response.json();
+            })
+            
+            // 檢查後臺程式: Response的data裡message項目要是沒有"successful"
+            // 的結果就報錯並結束流程
+            .then(function(data){
+
+                if(data.message !== "Successful!!"){
+                    
+                    alert("後臺系統錯誤!");
+                    return;
+                }
+                console.log(data);
+                this.isLogin = !this.isLogin;
+            })
+
+            .catch(function(error){
+
+                console.log('Login Error', error);
+
+                alert("後台系統錯誤!");
+
+            })
+
+
+
+
+        }
+
+        // switchWindows() {
+        //     this.isShow = !this.isShow
+        // },
+    
+
+
+    }
+}
 
 </script>
 
@@ -24,8 +109,12 @@
         <div class="btn-area">
 
                 <div class="login">
-                    <button type="button">登入</button>
+                    <button type="button" @click="login">登入</button>
                 </div>
+
+                <Info v-if="isLogin" @outsideWindows="login">
+                </Info>
+
                 
 
                 <div class="register">

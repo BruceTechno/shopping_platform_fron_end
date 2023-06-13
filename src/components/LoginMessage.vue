@@ -1,5 +1,5 @@
 <script>
-import RegisterView from '../views/RegisterView.vue';
+import LoginView from '../views/LoginView.vue';
 
 export default{
     methods: {
@@ -19,11 +19,16 @@ export default{
     <div class="container">
 
         <div class="info-area">
-            <h2>this is MessageInfo</h2>
-            <!-- <i class="fa-solid fa-x" @click="push"></i> -->
-            <i class="fa-sharp fa-solid fa-circle-xmark" @click="push"></i>
+            <h2>Notification</h2>
 
-            <RegisterView></RegisterView>
+            <h2>登錄成功!</h2>
+            <RouterLink class="link" to="/">回到主畫面</RouterLink>
+
+            <!-- <i class="fa-solid fa-x" @click="push"></i> -->
+            <!-- 退出按鈕 -->
+            <i class="fa-sharp fa-solid fa-circle-xmark" @click="push"></i>
+            
+            <LoginView></LoginView>
         </div>
 
         <!-- 開視窗後背景 -->

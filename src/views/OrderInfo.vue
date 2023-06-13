@@ -1,9 +1,20 @@
 <script>
+import TableView from "../components/Table.vue";
+export default{
+    components : {
+        TableView
+    },
+    data() {
+        return {
+            buy : "buy"
+        }
+    },
+}
 </script>
 
 <template>
     <div>
-        <h2>order</h2>
+        <TableView :buy="buy"/>
     </div>
 </template>
 

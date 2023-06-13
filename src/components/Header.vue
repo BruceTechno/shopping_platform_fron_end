@@ -1,5 +1,12 @@
 <script>
 import { RouterLink } from 'vue-router';
+export default{
+    data() {
+        return {
+            
+        }
+    },
+}
 </script>
 
 <template>
@@ -44,10 +51,10 @@ import { RouterLink } from 'vue-router';
 
         </div>
         <div class="category">
-            <RouterLink class="category-link" to="/category/c1">3C產品</RouterLink>
-            <RouterLink class="category-link" to="/category/c2">配件飾品</RouterLink>
-            <RouterLink class="category-link" to="/category/c3">居家生活</RouterLink>
-            <RouterLink class="category-link" to="/category/c4">休閒用品</RouterLink>
+            <RouterLink class="category-link" to="/category/3CProduct">3C產品</RouterLink>
+            <RouterLink class="category-link" to="/category/accessories">配件飾品</RouterLink>
+            <RouterLink class="category-link" to="/category/life">居家生活</RouterLink>
+            <RouterLink class="category-link" to="/category/casual">休閒用品</RouterLink>
             <RouterLink class="category-link" to="/category">所有分類</RouterLink>
         </div>
     </header>

@@ -9,6 +9,10 @@ import ShopCar from "../views/ShopCar.vue"
 import Login from "../views/Login.vue"
 import Checkout from "../views/Checkout.vue"
 import CarView from "../views/CarView.vue"
+import CCCProduct from "../views/CCCProduct.vue"
+import Accessories from "../views/Accessories.vue"
+import Casual from "../views/Casual.vue"
+import Life from "../views/Life.vue"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -66,16 +70,21 @@ const router = createRouter({
       name: 'category',
       children: [
         {
-          path: 'c1'
+          path: '3CProduct',
+          component:CCCProduct
         },
         {
-          path: 'c2'
+          path: 'accessories',
+          component:Accessories
         },
         {
-          path: 'c3'
+          path: 'life',
+          component:Life
+
         },
         {
-          path: 'c4'
+          path: 'casual',
+          component:Casual
         }
       ]
     },

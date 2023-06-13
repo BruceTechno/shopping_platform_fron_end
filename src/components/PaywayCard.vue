@@ -7,9 +7,7 @@ export default {
 
 <template>
     <div v-if="payway == '1'" class="creaditcard">
-        <h3>收件資訊</h3>
-        <h4>收件人姓名 :</h4>
-        <h4>收件人地址 :</h4>
+        <h3>付款資訊</h3>
         <div class="numberbox">
             <label for="number">信用卡號碼 :</label>
             <input id="number" type="number">

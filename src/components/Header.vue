@@ -44,7 +44,7 @@ import { RouterLink } from 'vue-router';
 
         </div>
         <div class="category">
-            <RouterLink class="category-link" to="/category/c1">3C產品</RouterLink>
+            <RouterLink class="category-link" to="/category/computer">3C產品</RouterLink>
             <RouterLink class="category-link" to="/category/c2">配件飾品</RouterLink>
             <RouterLink class="category-link" to="/category/c3">居家生活</RouterLink>
             <RouterLink class="category-link" to="/category/c4">休閒用品</RouterLink>

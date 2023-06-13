@@ -1,5 +1,4 @@
 <script>
-
 export default {
    data() {
       return {
@@ -169,53 +168,55 @@ export default {
       </div>
    </div>
    <div class="userInfoBox">
-      <div class="name">
-         <label for="name">名稱</label>
-         <input v-if="nameUp" type="text" id="name" v-model="userInfo.name">
-         <input v-else disabled="disabled" type="text" id="name" v-model="userInfo.name">
-         <div v-if="nameUp" class="btngroup">
-            <button type="button" @click="save('name')">儲存</button>
-            <button type="button" @click="cancel('name')">取消</button>
+      
+         <div class="name">
+            <label for="name">名稱</label>
+            <input v-if="nameUp" type="text" id="name" v-model="userInfo.name">
+            <input v-else disabled="disabled" type="text" id="name" v-model="userInfo.name">
+            <div v-if="nameUp" class="btngroup">
+               <button type="button" @click="save('name')">儲存</button>
+               <button type="button" @click="cancel('name')">取消</button>
+            </div>
+            <button v-else-if="!isUpdate" type="button" @click="update('name')">修改</button>
          </div>
-         <button v-else-if="!isUpdate" type="button" @click="update('name')">修改</button>
-      </div>
-      <div class="pwd">
-         <label for="pwd">密碼</label>
-         <div v-if="pwdUp" class="pwdbox">
-            <input v-bind:type="isActive ? 'text' : 'password'" id="pwd" v-model="userInfo.pwd">
-            <i v-bind:class="isActive ? 'fa-regular fa-eye-slash' : 'fa-regular fa-eye'" @click="isActive = !isActive"></i>
-         </div>
-         <input v-else disabled="disabled" type="password" id="pwd" v-model="userInfo.pwd">
+         <div class="pwd">
+            <label for="pwd">密碼</label>
+            <div v-if="pwdUp" class="pwdbox">
+               <input v-bind:type="isActive ? 'text' : 'password'" id="pwd" v-model="userInfo.pwd">
+               <i v-bind:class="isActive ? 'fa-regular fa-eye-slash' : 'fa-regular fa-eye'"
+                  @click="isActive = !isActive"></i>
+            </div>
+            <input v-else disabled="disabled" type="password" id="pwd" v-model="userInfo.pwd">
 
-         <div v-if="pwdUp" class="btngroup">
-            <button type="button" @click="save('pwd')">儲存</button>
-            <button type="button" @click="cancel('pwd')">取消</button>
-         </div>
-         <button v-else-if="!isUpdate" type="button" @click="update('pwd')">修改</button>
+            <div v-if="pwdUp" class="btngroup">
+               <button type="button" @click="save('pwd')">儲存</button>
+               <button type="button" @click="cancel('pwd')">取消</button>
+            </div>
+            <button v-else-if="!isUpdate" type="button" @click="update('pwd')">修改</button>
 
-      </div>
-      <div class="address">
-         <label for="address">地址</label>
-         <input v-if="addressUp" type="address" id="address" v-model="userInfo.address">
-         <input v-else disabled="disabled" type="address" id="address" v-model="userInfo.address">
-         <div v-if="addressUp" class="btngroup">
-            <button type="button" @click="save('address')">儲存</button>
-            <button type="button" @click="cancel('address')">取消</button>
          </div>
-         <button v-else-if="!isUpdate" type="button" @click="update('address')">修改</button>
+         <div class="address">
+            <label for="address">地址</label>
+            <input v-if="addressUp" type="address" id="address" v-model="userInfo.address">
+            <input v-else disabled="disabled" type="address" id="address" v-model="userInfo.address">
+            <div v-if="addressUp" class="btngroup">
+               <button type="button" @click="save('address')">儲存</button>
+               <button type="button" @click="cancel('address')">取消</button>
+            </div>
+            <button v-else-if="!isUpdate" type="button" @click="update('address')">修改</button>
 
-      </div>
-      <div class="phone">
-         <label for="phone">電話</label>
-         <input v-if="phoneUp" type="tel" id="phone" v-model="userInfo.phone">
-         <input v-else disabled="disabled" type="tel" id="phone" v-model="userInfo.phone">
-         <div v-if="phoneUp" class="btngroup">
-            <button type="button" @click="save('phone')">儲存</button>
-            <button type="button" @click="cancel('phone')">取消</button>
          </div>
-         <button v-else-if="!isUpdate" type="button" @click="update('phone')">修改</button>
-
-      </div>
+         <div class="phone">
+            <label for="phone">電話</label>
+            <input v-if="phoneUp" type="tel" id="phone" v-model="userInfo.phone">
+            <input v-else disabled="disabled" type="tel" id="phone" v-model="userInfo.phone">
+            <div v-if="phoneUp" class="btngroup">
+               <button type="button" @click="save('phone')">儲存</button>
+               <button type="button" @click="cancel('phone')">取消</button>
+            </div>
+            <button v-else-if="!isUpdate" type="button" @click="update('phone')">修改</button>
+         </div>
+      
 
    </div>
 </template>
@@ -242,9 +243,9 @@ export default {
    display: flex;
    flex-direction: column;
    justify-content: start;
-   align-items: center;
+   align-items: start;
    font-size: 20px;
-
+   
    .name,
    .pwd,
    .address,
@@ -252,7 +253,7 @@ export default {
       display: flex;
       justify-content: start;
       align-items: center;
-
+      padding-left: 300px;
       .pwdbox {
          position: relative;
 

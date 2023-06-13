@@ -1,5 +1,4 @@
 <script>
-
 import FuctionSelect from "../components/FunctionSelect.vue"
 export default {
     components: {

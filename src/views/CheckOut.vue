@@ -63,6 +63,7 @@ export default {
             let dom = document.getElementById("payway");
             console.log(dom.value);
             let orderInfo = {};
+            console.log(typeof this.checkoutInfo);
             this.checkoutInfo.forEach(i => {
                 orderInfo[i.number] = i.quantity
             })

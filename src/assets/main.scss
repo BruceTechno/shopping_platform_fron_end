@@ -2,3 +2,6 @@
 @import "../assets/stylesheet/helper/_variables.scss";
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
+#app {
+    width: 100vw;
+}

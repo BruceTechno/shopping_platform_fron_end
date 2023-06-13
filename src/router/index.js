@@ -9,6 +9,8 @@ import ShopCar from "../views/ShopCar.vue"
 import Login from "../views/Login.vue"
 import Checkout from "../views/Checkout.vue"
 import CarView from "../views/CarView.vue"
+import OrderDetail from "../components/OrderDetail.vue"
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -29,7 +31,13 @@ const router = createRouter({
         },
         {
           path: 'orderview',
-          component: OrderView
+          component: OrderView,
+          
+        },
+        {
+          path: 'orderDetail',
+          component: OrderDetail,
+          
         }
       ]
     },
@@ -80,7 +88,7 @@ const router = createRouter({
       ]
     },
     {
-      path : '/checkout:propText',
+      path : '/orderview',
       name :'checkout',
       component : Checkout,
       props : true

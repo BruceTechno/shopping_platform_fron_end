@@ -6,7 +6,8 @@ export default {
             moneySum: 0,
             selectItem: [],
             money: 0,
-            prop: null
+            prop: null,
+            src : null
         }
     },
     mounted() {
@@ -18,9 +19,12 @@ export default {
             .then(data => {
                 console.log(data);
                 this.shopCarList = data.getCommodityInfoList;
+                
                 this.shopCarList.forEach(item => {
                     this.moneySum += (+item.price * item.quantity);
+                    item.src =`../../pic/${item.imgPath}.jpg`
                 })
+                console.log(this.shopCarList);
                 console.log(this.moneySum);
             })
 
@@ -129,7 +133,7 @@ export default {
                     </div>
                     <div class="produt-info">
                         <div class="imgbox">
-                            <img src="" alt="pic">
+                            <img v-bind:src="item.src" alt="pic">
                         </div>
                         <div class="infogroup">
                             <div class="infobox">
@@ -250,6 +254,10 @@ export default {
                     height: 120px;
                     margin-left: 20px;
                     background-color: aqua;
+                    img{
+                        width: 100%;height: 100%;
+                        
+                    }
                 }
 
                 .selectgroup {

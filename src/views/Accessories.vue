@@ -23,7 +23,7 @@ export default {
 
 <style lang="scss" scoped>
 .product {
-    height: 100vh;
+    height: 90vh;
     overflow-x: hidden;
     overflow-y: auto;
     display: grid;

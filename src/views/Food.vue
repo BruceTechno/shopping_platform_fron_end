@@ -23,11 +23,11 @@ export default {
 
 <style lang="scss" scoped>
 .product {
-    height: 100vh;
+    height: 90vh;
     overflow-x: hidden;
     overflow-y: auto;
     display: grid;
-    grid-template-columns: 250px 250px 250px 250px;
+    grid-template-columns: 250px 250px 250px 250px ;
     grid-template-rows: auto;
 
     .test {

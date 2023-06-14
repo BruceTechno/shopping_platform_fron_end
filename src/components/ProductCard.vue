@@ -70,6 +70,10 @@ export default{
             width: 200px;
             height: 200px;
             background-color: black;
+            img{
+                width: 100%;
+                height: 100%;
+            }
         }
 
     }

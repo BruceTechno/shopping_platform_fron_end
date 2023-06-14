@@ -30,7 +30,7 @@ import { RouterLink } from 'vue-router';
                 <div class="member-center">
                     <RouterLink class="link" to="/member-center">會員中心</RouterLink>
                 </div>
-                <!-- 註冊/登入 -->
+                <!-- 登出 -->
                 <div class="login">
                     <RouterLink class="link" to="/login">登出</RouterLink>
                 </div>

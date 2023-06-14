@@ -30,12 +30,12 @@ const router = createRouter({
       component: RegisterView
 
     },
-    {
-      path: '/logout',
-      name: 'logout',
-      component: LogoutView
+    // {
+    //   path: '/logout',
+    //   name: 'logout',
+    //   component: LogoutView
 
-    },
+    // },
     {
       path: '/shopping-car',
       name: 'shopping-car',

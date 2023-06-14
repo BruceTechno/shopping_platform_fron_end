@@ -96,6 +96,7 @@ export default {
             console.log(comNumber);
             if (comNumber.length == 0) {
                 console.log("沒點選");
+                alert("沒有點選商品!")
                 return;
             }
             let resStr = [];

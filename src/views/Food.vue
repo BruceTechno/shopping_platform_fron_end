@@ -6,17 +6,16 @@ export default {
     },
     data() {
         return {
-            category: "3C"
+            category : "美食廣場"
         }
-    }
-    
+    },
 }
 </script>
 
 <template>
-    <h2>3C產品</h2>
+    <h2>美食廣場</h2>
     <div class="product">
-
+        
         <ProductCard :category="category" />
         <!-- 下面這些用上面這個 v-for產生 -->
     </div>

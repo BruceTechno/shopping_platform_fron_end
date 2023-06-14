@@ -4,7 +4,7 @@ import { RouterView } from 'vue-router';
 export default {
     data() {
         return {
-            title: "分類查詢",
+            title: "商品分類",
             member: [
                 {
                     name: "3C產品",
@@ -12,15 +12,19 @@ export default {
                 },
                 {
                     name: "配件飾品",
-                    to: "/category/commodity"
+                    to: "/category/accessories"
                 },
                 {
                     name: "居家生活",
-                    to: "/category/orderview"
+                    to: "/category/life"
                 },
                 {
                     name: "休閒用品",
-                    to: "/category/commodity"
+                    to: "/category/casual"
+                },
+                {
+                    name: "美食廣場",
+                    to: "/category/food"
                 }
             ]
         }

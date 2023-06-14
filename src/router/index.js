@@ -12,7 +12,10 @@ import CarView from "../views/CarView.vue"
 import OrderInfoView from "../views/OrderInfo.vue"
 import CategoryView from "../views/Category.vue"
 import ComputerView from "../views/Computer.vue"
-
+import AccessoriesView from "../views/Accessories.vue"
+import LifeView from "../views/Life.vue"
+import CasualView from "../views/Casual.vue"
+import FoodView from "../views/Food.vue"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -79,13 +82,20 @@ const router = createRouter({
           component : ComputerView
         },
         {
-          path: 'c2'
+          path: 'accessories',
+          component : AccessoriesView
         },
         {
-          path: 'c3'
+          path: 'life',
+          component : LifeView
         },
         {
-          path: 'c4'
+          path: 'casual',
+          component :CasualView
+        },
+        {
+          path:'food',
+          component : FoodView
         }
       ]
     },

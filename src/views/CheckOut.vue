@@ -128,7 +128,7 @@ export default {
 <template>
     <div class="checloutbox">
         <div class="btnbox">
-            <button type="button">返回購物車</button>
+            <button type="button" @click="this.$router.push('/shopping-car/carview')">返回購物車</button>
         </div>
         <div class="checkinfobox">
             <table id="showData" class="table">
@@ -153,7 +153,9 @@ export default {
                 </thead>
                 <tbody id="tbody">
                     <tr v-for="item in checkoutInfo" class="itembox">
-                        <th scope="row" class="imgbox"><img src="" alt="pic"></th>
+                        <th scope="row" class="imgbox">
+                            <img src="" alt="pic">
+                        </th>
                         <td>{{ item.name }}</td>
                         <td>{{ item.price }}</td>
                         <td>{{ item.quantity }}</td>

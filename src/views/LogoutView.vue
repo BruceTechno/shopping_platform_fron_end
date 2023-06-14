@@ -83,41 +83,9 @@ export default {
     <div class="cube">
 
         <div class="in-cube">
-        <h1>會員登錄</h1>
+        <h1>會員登入後網站</h1>
 
-        <span class="account">
-            <p>帳號
-                <input type="text" class="account-input" v-model="account">
-            </p>
-        </span>
-        <span class="pwd">
-            <p>密碼
-                <input type="password" class="pwd-input" v-model="pwd">
-            </p>
-        </span>
-
-        <div class="btn-area">
-
-                <div class="login">
-                    
-                    <Router-link to="/logout">
-                        <button type="button" @click="login">登入</button>
-                    </Router-link>
-                </div>
-
-                <Info v-if="isLogin" @outsideWindows="login">
-                </Info>
-
-                
-
-                <div class="register">
-
-                    <RouterLink to="/register">
-                        
-                        <button type="button" RouterLink to="/register">註冊</button>
-                    </RouterLink>
-                </div>
-    </div>
+        <Info v-if="isLogin" @outsideWindows="login"></Info>
 
     </div>
 </div>
@@ -184,18 +152,6 @@ export default {
             margin-right: 20px;
             }   
 
-    /* .cube .in-cube .btn-area .register{
-        margin-left: 20px;
-    } */
 
-
-
-
-
-    /* .cube  .pwd{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    } */
 
 </style>

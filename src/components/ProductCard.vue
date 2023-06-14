@@ -24,13 +24,24 @@ export default{
             console.log(this.commodity)
         })
     },
-    props:["category"]
+    props:["category"],
+    methods :{
+        comPage(comNumber){
+            console.log(comNumber);
+            this.$router.push({
+                name: 'commodityPage',
+                params: {
+                    number: comNumber
+                }
+            })
+        }
+    }
 }
 </script>
 
 <template>
     <div v-for="item in commodity" class="product-card">
-        <div class="linkbox">
+        <div class="linkbox" @click="comPage(item.number)">
             <div class="imgbox">
                 <img v-bind:src="`../../pic/${item.imgPath}.jpg`" alt="pic">
             </div>

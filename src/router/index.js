@@ -16,6 +16,8 @@ import AccessoriesView from "../views/Accessories.vue"
 import LifeView from "../views/Life.vue"
 import CasualView from "../views/Casual.vue"
 import FoodView from "../views/Food.vue"
+import CommodityPage from "../views/CommodityPage.vue"
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -104,6 +106,12 @@ const router = createRouter({
       name :'checkout',
       component : Checkout,
       props : true
+    },
+    {
+      path :'/commodityPage:number',
+      name : 'commodityPage',
+      component : CommodityPage,
+      props  : true
     }
   ]
 })

@@ -42,6 +42,8 @@
 //     display: flex;
 //     justify-content: center;align-content: center;
 // }
+
+
 .wrapper {
     width: 100%;
     height: 200px;

@@ -12,6 +12,7 @@ import CarView from "../views/CarView.vue"
 import OrderInfoView from "../views/OrderInfo.vue"
 import CategoryView from "../views/Category.vue"
 import ComputerView from "../views/Computer.vue"
+import CommodityPage from "../views/CommodityPage.vue"
 
 
 const router = createRouter({
@@ -94,7 +95,12 @@ const router = createRouter({
       name :'checkout',
       component : Checkout,
       props : true
-    }
+    },
+    {
+      path : '/commodity-page',
+      name :'commodity-page',
+      component : CommodityPage,
+    },
   ]
 })
 

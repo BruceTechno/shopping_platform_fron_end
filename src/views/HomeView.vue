@@ -1,4 +1,28 @@
-<script></script>
+<script>
+import { RouterLink } from 'vue-router';
+export default{
+    data() {
+        return {
+            img:null,
+            commodityList:[],
+        }
+    },
+    mounted() {
+        fetch("http://localhost:8080/get_all_com", {
+            credentials: 'include',
+            method: "GET",
+        })
+            .then(res => res.json())
+            .then(data => {
+               console.log(data);
+                this.commodityList = data.commodityList;
+                console.log(this.img = data.commodityList[0].imgPath);
+                
+            })
+    },
+}
+
+</script>
 
 <template>
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
@@ -36,6 +60,12 @@
     <div class="top-product">
         <h2>熱賣商品</h2>
     </div>
+    <div class="img">
+       <RouterLink class="" to="/commodity-page"> 
+        <img src="pic\123.jpg" alt="img">
+       </RouterLink>
+     
+    </div>
 </template>
 
 <style lang="scss" scoped>
@@ -54,4 +84,14 @@
     justify-content: center;
     align-items: center;
 }
+.img{
+    width: 120px;
+    height: 120px;
+    img{
+        width: 100%;
+        height: 100%;
+    }
+}
 </style>
+
+ 

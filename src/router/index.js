@@ -31,6 +31,12 @@ const router = createRouter({
 
     },
     {
+      path: '/logout',
+      name: 'logout',
+      component: LogoutView
+
+    },
+    {
       path: '/shopping-car',
       name: 'shopping-car',
     },

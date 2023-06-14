@@ -2,10 +2,12 @@
 import { RouterLink, RouterView } from 'vue-router';
 import HeaderView from "./components/Header.vue";
 import FooterView from "./components/Footer.vue";
+import HeaderLoginView from "./components/HeaderLogin.vue";
 export default {
     components: {
         HeaderView,
-        FooterView
+        FooterView,
+        HeaderLoginView
     }
 
 }

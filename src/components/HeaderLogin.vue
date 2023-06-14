@@ -31,9 +31,8 @@ import { RouterLink } from 'vue-router';
                     <RouterLink class="link" to="/member-center">會員中心</RouterLink>
                 </div>
                 <!-- 註冊/登入 -->
-                <!-- {{ 登出 }} -->
                 <div class="login">
-                    <RouterLink class="link" to="/login">註冊/登入</RouterLink>
+                    <RouterLink class="link" to="/login">登出</RouterLink>
                 </div>
                 <!-- 購物車 -->
                 <div class="shopping-car">

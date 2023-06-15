@@ -83,12 +83,12 @@ export default{
 
         .logo {
             width: 100px;
-            height: 100px;
+            height: 80px;
             margin: 0 10px;
 
             img {
                 width: 100%;
-                
+                height: 100%;
             }
         }
 
@@ -102,6 +102,7 @@ export default{
                 padding: 5px 40px 5px 5px  ;
                 font-size: 20px;
                 border-radius: 10px;
+                margin-left: 10px;
                 border: none;
             }
 

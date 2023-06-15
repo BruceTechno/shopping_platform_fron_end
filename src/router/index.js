@@ -6,7 +6,7 @@ import MyMarketView from "../views/MyMarket.vue"
 import CommodityView from "../views/Commodity.vue"
 import OrderView from "../views/OrderView.vue"
 import ShopCar from "../views/ShopCar.vue"
-import Login from "../views/Login.vue"
+import Login from "../views/LoginView.vue"
 import Checkout from "../views/Checkout.vue"
 import CarView from "../views/CarView.vue"
 import OrderInfoView from "../views/OrderInfo.vue"
@@ -21,6 +21,7 @@ import OrderDetail from "../views/OrderDetail.vue"
 import OrderDetailUser from "../views/OrderDetailUser.vue"
 import AddCommodity from "../views/AddCommodity.vue"
 import CommodityEdit from "../views/CommodityEdit.vue"
+import RegisterView from "../views/RegisterView.vue"
 import { compile } from 'vue'
 
 const router = createRouter({
@@ -83,6 +84,11 @@ const router = createRouter({
       path: '/login',
       name: 'login',
       component: Login
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: RegisterView
     },
     {
       path: '/shopping-car',

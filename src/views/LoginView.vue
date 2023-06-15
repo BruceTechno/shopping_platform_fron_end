@@ -1,4 +1,6 @@
 <script>
+import {mapActions} from "pinia";
+import indexStore from "../stores/indexStore"
 import Info from "../components/LoginMessage.vue";
 export default {
     components: {
@@ -13,8 +15,11 @@ export default {
             isLogin: false,
         }
     },
-
+    mounted(){
+        this.updateLocation(400);
+    },
     methods: {
+        ...mapActions(indexStore, ["updateLocation"]),
         login() {
 
             const body = {
@@ -54,12 +59,13 @@ export default {
 
                     if (data.message !== "Successful!!") {
 
-                        alert("登入系統錯誤!");
+                        alert("登入資料錯誤!");
                         console.log(data);
                         return;
                     }
                     console.log(data);
                     this.isLogin = !this.isLogin;
+                    sessionStorage.setItem("isLogin",true);
                 })
 
         }

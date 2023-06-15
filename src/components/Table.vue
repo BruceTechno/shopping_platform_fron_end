@@ -12,6 +12,9 @@ export default {
             this.$router.push(`/my-market/orderDetail?${test}`)
 
         },
+        detailBuy(number) {
+            this.$router.push(`/member-center/orderDetailUser?${number}`)
+        },
         getAccountBuy() {
             fetch("http://localhost:8080/search_order_by_account_buy", {
                 credentials: 'include',
@@ -34,10 +37,9 @@ export default {
                     this.orderInfos = data.orderInfos;
                 })
         },
-        getPayWay(payway){
-            console.log(typeof payway)
-            switch(payway){
-                case 1 :
+        getPayWay(payway) {
+            switch (payway) {
+                case 1:
                     return "信用卡支付";
                 case 2:
                     return "ATM轉帳"
@@ -45,15 +47,22 @@ export default {
                     return "貨到付款"
             }
         },
-        getDeliveryWay(deliveryWay){
-            
-            switch(deliveryWay){
-                case 1 :
+        getDeliveryWay(deliveryWay) {
+            switch (deliveryWay) {
+                case 1:
                     return "宅配";
                 case 2:
                     return "711取貨"
                 case 3:
                     return "全家取貨"
+            }
+        },
+        getStatus(status) {
+            switch (status) {
+                case 1:
+                    return "已完成";
+                case 0:
+                    return "已取消"
             }
         }
 
@@ -61,8 +70,6 @@ export default {
 
     },
     mounted() {
-
-        console.log(this.buy);
         if (this.buy == "buy") {
             this.getAccountBuy();
         }
@@ -86,12 +93,13 @@ export default {
             </tr>
             <tr v-for="orderInfo in orderInfos" :key="orderInfo.orderNumber">
                 <td>{{ orderInfo.orderNumber }}</td>
-                <td>{{ orderInfo.status }}</td>
+                <td>{{ getStatus(orderInfo.status) }}</td>
                 <td>{{ getDeliveryWay(orderInfo.deliveryWay) }}</td>
                 <td v-if="buy == 'buy'">{{ getPayWay(orderInfo.payWay) }}</td>
                 <td v-else>{{ orderInfo.accountBuy }}</td>
                 <td>
-                    <button type="button" @click="detail(orderInfo.orderNumber)">訂單詳情</button>
+                    <button v-if="buy == 'buy'" type="button" @click="detailBuy(orderInfo.orderNumber)">訂單詳情</button>
+                    <button v-else type="button" @click="detail(orderInfo.orderNumber)">訂單詳情</button>
                 </td>
 
             </tr>

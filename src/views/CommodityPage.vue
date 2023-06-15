@@ -45,19 +45,22 @@ export default {
                 },
                 body: JSON.stringify(body)
             })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                if(data.message == "Successful!!"){
-                    alert("加入成功 ! ");
-                    this.$router.push("/shopping-car/carview")
-                }
-                else{
-                    alert("請先登入 ! ")
-                    this.$router.push("/login")
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    if (data.message == "Successful!!") {
+                        alert("加入成功 ! ");
+                        this.$router.push("/shopping-car/carview")
+                    }
+                    else if (data.message == "Inventory not enough !") {
+                        alert("庫存量不足 ! ");
+                    }
+                    else {
+                        alert("請先登入 ! ")
+                        this.$router.push("/login")
 
-                }
-            })
+                    }
+                })
         }
     },
 }
@@ -102,7 +105,11 @@ export default {
             <span class="inventory">庫存 {{ comInfo === null ? "" : comInfo.inventory }}</span>
 
             <br><br>
-            <button v-if="comInfo !== null" type="button" @click="inCar(comInfo.number)">加入購物車</button>
+            <button v-if="comInfo !== null && +comInfo.inventory > 0" type="button"
+                @click="inCar(comInfo.number)">加入購物車</button>
+
+            <h2 v-else style="background-color:#E2C2B3 ;font-weight: bold;border-radius: 10px; text-align: center;">缺貨中</h2>
+
             <br><br><br>
             <p class="way">配送方式 : 超商取貨 一般取貨</p>
             <br>
@@ -111,7 +118,11 @@ export default {
 
         <div class="about">
             <h2>關於賣家</h2>
-            <p>RouterLink吧連結跳轉到賣場>{{ comInfo === null ? "" : comInfo.accountSell }}</p>
+            <div class="d-flex align-items-center justify-content-sm-center ">
+                <i class=" mx-1 fa-solid fa-star" style="color: #e48b8b;"></i>
+                <p class="m-0 ">{{ comInfo === null ? "" : comInfo.accountSell }}的賣場</p>
+            </div>
+
         </div>
 
     </div>
@@ -127,6 +138,12 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.noBtn {
+    button {
+        background-color: red;
+    }
+}
+
 .title {
     padding: 1.5rem 12rem 0.2rem 12rem;
     min-width: 1270px;

@@ -18,8 +18,8 @@ import CasualView from "../views/Casual.vue"
 import FoodView from "../views/Food.vue"
 import CommodityPage from "../views/CommodityPage.vue"
 import OrderDetail from "../views/OrderDetail.vue"
+import OrderDetailUser from "../views/OrderDetailUser.vue"
 
-OrderDetail
 
 
 const router = createRouter({
@@ -61,6 +61,10 @@ const router = createRouter({
         {
           path: 'orderInfo',
           component: OrderInfoView
+        },
+        {
+          path:'orderDetailUser',
+          component : OrderDetailUser
         }
       ]
     },

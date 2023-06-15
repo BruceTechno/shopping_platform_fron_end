@@ -46,6 +46,7 @@ export default {
                     .then(data => {
                         console.log(data);
                         this.checkoutInfo.push({
+                            src: data.commodityList[0].imgPath,
                             number: data.commodityList[0].number,
                             name: data.commodityList[0].name,
                             price: data.commodityList[0].price,
@@ -154,7 +155,7 @@ export default {
                 <tbody id="tbody">
                     <tr v-for="item in checkoutInfo" class="itembox">
                         <th scope="row" class="imgbox">
-                            <img src="" alt="pic">
+                            <img v-bind:src="`../../pic/${item.src}.jpg`" alt="pic">
                         </th>
                         <td>{{ item.name }}</td>
                         <td>{{ item.price }}</td>
@@ -260,12 +261,9 @@ export default {
             .imgbox {
                 width: 100px;
                 height: 100px;
-                background-color: blue;
-
                 img {
                     width: 100%;
                     height: 100%;
-
                 }
             }
 

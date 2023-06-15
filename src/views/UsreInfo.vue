@@ -1,4 +1,8 @@
 <script>
+import {mapActions} from "pinia";
+
+import indexStore from "../stores/indexStore"
+
 export default {
    data() {
       return {
@@ -201,10 +205,13 @@ export default {
 
                }
             })
-      }
+      },
+      ...mapActions(indexStore, ["updateLocation"])
    },
    mounted() {
       this.getUser();
+      this.updateLocation(200);
+
    }
 }
 </script>

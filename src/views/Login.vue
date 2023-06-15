@@ -1,4 +1,6 @@
 <script>
+import {mapActions} from "pinia";
+import indexStore from "../stores/indexStore"
 export default {
     data() {
         return {
@@ -27,7 +29,13 @@ export default {
                 .then(data => {
                     console.log(data)
                 })
-        }
+        },
+        ...mapActions(indexStore, ["updateLocation"])
+    },
+       
+    mounted() {
+        this.updateLocation(400);
+        
     }
 }
 </script>

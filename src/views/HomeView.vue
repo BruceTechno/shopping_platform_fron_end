@@ -1,4 +1,22 @@
-<script></script>
+<script>
+import {mapActions} from "pinia";
+import indexStore from "../stores/indexStore"
+export default {
+    
+    data() {
+        return {
+          
+        }
+    },
+    methods: {
+        ...mapActions(indexStore, ["updateLocation"])
+    },
+    mounted() {
+        this.updateLocation(0);
+        
+    }
+}
+</script>
 
 <template>
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">

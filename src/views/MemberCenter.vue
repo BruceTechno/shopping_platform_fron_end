@@ -1,6 +1,9 @@
 <script>
 import FuctionSelect from "../components/FunctionSelect.vue"
 import { RouterView } from 'vue-router';
+import {mapActions} from "pinia";
+import indexStore from "../stores/indexStore"
+
 export default {
     components: {
         FuctionSelect
@@ -12,11 +15,13 @@ export default {
         return {
             title: "會員中心",
             member: [
-                {
+                {   
+                    index:200,
                     name: "會員資料修改",
                     to: "/member-center/userInfo"
                 },
                 {
+                    index:201,
                     name: "訂單查詢",
                     to: "/member-center/orderInfo"
                 }
@@ -24,8 +29,11 @@ export default {
            
         }
     },
+    methods: {
+        ...mapActions(indexStore, ["updateLocation"])
+    },
     mounted() {
-
+        this.updateLocation(200);
     }
 }
 </script>

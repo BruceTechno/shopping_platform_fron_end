@@ -1,5 +1,7 @@
 <script>
 import ProductCard from "../components/ProductCard.vue"
+import {mapActions} from "pinia";
+import indexStore from "../stores/indexStore"
 export default {
     components: {
         ProductCard
@@ -8,8 +10,14 @@ export default {
         return {
             category: "3C"
         }
+    },
+    methods: {
+        ...mapActions(indexStore, ["updateLocation"])
+    },
+    mounted() {
+        this.updateLocation(501);
+        
     }
-    
 }
 </script>
 

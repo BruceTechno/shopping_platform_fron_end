@@ -1,5 +1,7 @@
 <script>
 import ProductCard from "../components/ProductCard.vue"
+import {mapActions} from "pinia";
+import indexStore from "../stores/indexStore"
 export default {
     components: {
         ProductCard
@@ -9,6 +11,13 @@ export default {
             category : "飾品配件"
         }
     },
+    methods: {
+        ...mapActions(indexStore, ["updateLocation"])
+    },
+    mounted() {
+        this.updateLocation(502);
+        
+    }
 }
 </script>
 
@@ -37,3 +46,13 @@ export default {
     }
 }
 </style>
+
+<!-- import {mapActions} from "pinia";
+import indexStore from "../stores/indexStore"
+ methods: {
+        ...mapActions(indexStore, ["updateLocation"])
+    },
+    mounted() {
+        this.updateLocation(501);
+        
+    }-->

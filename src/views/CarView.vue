@@ -1,4 +1,6 @@
 <script>
+import {mapActions} from "pinia";
+import indexStore from "../stores/indexStore"
 export default {
     data() {
         return {
@@ -11,6 +13,7 @@ export default {
         }
     },
     mounted() {
+
         fetch("http://localhost:8080/get_shopping_car_info", {
             credentials: 'include',
             method: "GET",
@@ -27,7 +30,7 @@ export default {
                 console.log(this.shopCarList);
                 console.log(this.moneySum);
             })
-
+            this.updateLocation(300);
     },
     methods: {
         test(name, number) {
@@ -115,7 +118,9 @@ export default {
                     propText: this.prop
                 }
             })
-        }
+        },
+        ...mapActions(indexStore, ["updateLocation"])
+
     }
 }
 </script>

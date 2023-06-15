@@ -1,5 +1,18 @@
 <script>
 import { RouterLink } from 'vue-router';
+import {mapState,mapActions} from "pinia";
+import indexStore from "../stores/indexStore"
+export default{
+    methods:{
+ // mapActions => 取的是pinia裡面actions的資料       
+ // ...為淺層拷貝 //1.自己的資料 2.要取用的方法
+        ...mapActions(indexStore,["updateLocation"])
+    },
+// mapState => 取的是pinia裡面 state getter的資料           
+    computed:{
+        ...mapState(indexStore,["location","getLocation"])
+    }
+}
 </script>
 
 <template>
@@ -24,20 +37,20 @@ import { RouterLink } from 'vue-router';
             <div class="function-group">
                 <!-- 我的賣場 -->
                 <div class="my-market">
-                    <RouterLink class="link" to="/my-market/orderview">我的賣場</RouterLink>
+                    <RouterLink class="link" :class="{local: location > 99 && location <103 }" to="/my-market/orderview">我的賣場</RouterLink>
                 </div>
                 <!-- 會員中心 -->
                 <div class="member-center">
-                    <RouterLink class="link" to="/member-center/userInfo">會員中心</RouterLink>
+                    <RouterLink class="link" :class="{local:location > 199 && location <202}" to="/member-center/userInfo">會員中心</RouterLink>
                 </div>
 
                 <!-- 購物車 -->
                 <div class="shopping-car">
-                    <RouterLink class="link" to="/shopping-car/carview"><i class="fa-solid fa-cart-shopping"></i></RouterLink>
+                    <RouterLink class="link" :class="{local:location === 300}" to="/shopping-car/carview"><i class="fa-solid fa-cart-shopping"></i></RouterLink>
                 </div>
                 <!-- 註冊/登入 -->
                 <div class="login">
-                    <RouterLink class="link" to="/login">登入</RouterLink>
+                    <RouterLink class="link" :class="{local:location === 400}" to="/login">登入</RouterLink>
                 </div>
             </div>
 
@@ -156,4 +169,10 @@ header {
     &:hover {
         color: white;
     }
-}</style>
+}
+.local{
+        color: #41b782;
+        background-color: white;
+        border-radius: 6px;
+    }
+</style>

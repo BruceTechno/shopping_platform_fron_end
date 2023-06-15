@@ -1,4 +1,6 @@
 <script>
+import {mapActions} from "pinia";
+import indexStore from "../stores/indexStore"
 import TableView from "../components/Table.vue";
 export default{
     components : {
@@ -9,6 +11,13 @@ export default{
             buy : "buy"
         }
     },
+    methods: {
+        ...mapActions(indexStore, ["updateLocation"])
+    },
+    mounted() {
+        this.updateLocation(201);
+        
+    }
 }
 </script>
 

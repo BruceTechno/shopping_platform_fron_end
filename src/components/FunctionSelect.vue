@@ -1,6 +1,16 @@
 <script>
-
+import {mapState,mapActions} from "pinia";
+import indexStore from "../stores/indexStore"
 export default {
+
+    methods:{
+ 
+        ...mapActions(indexStore,["updateLocation"]),
+    },
+    computed:{
+        ...mapState(indexStore,["location","getLocation"])
+    },
+
     props: ["member", "title"]
 }
 </script>
@@ -10,7 +20,7 @@ export default {
         
         <div class="fuction-group">
             <h2>{{ title }}</h2>
-            <RouterLink v-for="item in member" :key="item" class="category-link" v-bind:to="item.to">{{ item.name }}
+            <RouterLink v-for="item in member" :key="item" class="category-link" :class="{local:location ===  item.index}" v-bind:to="item.to">{{ item.name }}
             </RouterLink>
         </div>
     </div>
@@ -35,4 +45,9 @@ export default {
         }
     }
 }
+.local{
+        color: #41b782 !important;
+        background-color: white;
+        border-radius: 6px;
+    }
 </style>

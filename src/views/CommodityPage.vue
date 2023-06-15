@@ -58,7 +58,6 @@ export default {
                     else {
                         alert("請先登入 ! ")
                         this.$router.push("/login")
-
                     }
                 })
         }

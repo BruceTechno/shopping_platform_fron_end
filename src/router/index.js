@@ -153,5 +153,24 @@ const router = createRouter({
 
 export default router
 
-
+// login判斷
+router.beforeEach((to, from, next) => {
+  const isLogin = sessionStorage.getItem('isLogin');
+  console.log(isLogin);
+  if (isLogin == "true") {  
+    if(to.path == '/login') {
+      alert('已登入')
+      next('/');
+    }
+    next();
+  } 
+  else {
+    if( to.path === '/my-market/orderview' || to.path ==='/member-center/userInfo' || to.path === '/shopping-car/carview'){
+      alert("請先登入 !");
+      next('/login');
+    }   
+    else
+      next()
+  }
+})
 

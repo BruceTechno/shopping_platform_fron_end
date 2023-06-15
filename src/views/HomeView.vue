@@ -1,16 +1,16 @@
 <script>
-import {mapActions} from "pinia";
+import { mapActions } from "pinia";
 import indexStore from "../stores/indexStore"
 export default {
-    
+
     data() {
         return {
-          topFour:null
+            topFour: null
         }
     },
     methods: {
         ...mapActions(indexStore, ["updateLocation"]),
-        comPage(comNumber){
+        comPage(comNumber) {
             console.log(comNumber);
             this.$router.push({
                 name: 'commodityPage',
@@ -33,9 +33,9 @@ export default {
                 console.log(data);
                 this.topFour = data.commodityList
                 console.log(this.topFour);
-         
+
             })
-        
+
     }
 }
 </script>
@@ -76,29 +76,29 @@ export default {
         <h2>熱賣商品</h2>
     </div>
     <div class="top-product">
-       
-        
+
+
         <div v-for="item in topFour" class="product-card">
 
-        <div class="linkbox" @click="comPage(item.number)">
-            <div class="imgbox">
-                <img v-bind:src="`../../pic/${item.imgPath}.jpg`" alt="pic">
+            <div class="linkbox" @click="comPage(item.number)">
+                <div class="imgbox">
+                    <img v-bind:src="`../../pic/${item.imgPath}.jpg`" alt="pic">
+                </div>
+                <div class="word-box">
+                    <h2>{{ item.name }}</h2>
+                </div>
             </div>
-            <div class="word-box">
-                <h2>{{ item.name }}</h2>
-            </div>
-        </div>
 
-        <div class="price-box">
-            <p>{{ item.price }}元</p>
+            <div class="price-box">
+                <p>{{ item.price }}元</p>
+            </div>
         </div>
-    </div>
 
     </div>
 </template>
 
 <style lang="scss" scoped>
-#carouselExampleIndicators{
+#carouselExampleIndicators {
     width: 100%;
 }
 
@@ -107,51 +107,58 @@ export default {
         height: 300px;
     }
 }
-.top-product{
+
+.top-product {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+
     .product-card {
-    height: 300px;
-    margin: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    .price-box{
-        width: 200px;
-    }
-    .linkbox {
-        cursor: pointer;
-        .word-box {
+        height: 300px;
+        margin: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .price-box {
             width: 200px;
-            h2{
-                font-weight: bold;
-            }
         }
 
-        .imgbox {
+        .linkbox {
             cursor: pointer;
-            width: 200px;
-            height: 200px;
-            background-color: black;
-            img{
-                width: 100%;
-                height: 100%;
+
+            .word-box {
+                width: 200px;
+
+                h2 {
+                    font-weight: bold;
+                }
             }
+
+            .imgbox {
+                cursor: pointer;
+                width: 200px;
+                height: 200px;
+                background-color: black;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
         }
 
+        h2 {
+            font-size: 24px;
+        }
     }
+}
 
-    h2 {
-        font-size: 24px;
-    }
-}
-}
-.title-box{
+.title-box {
     text-align: center;
     font-size: 24px;
     margin-top: 16px;
-}
-</style>
+}</style>

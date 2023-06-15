@@ -23,6 +23,7 @@ import AddCommodity from "../views/AddCommodity.vue"
 import CommodityEdit from "../views/CommodityEdit.vue"
 import RegisterView from "../views/RegisterView.vue"
 import { compile } from 'vue'
+import SearchPageView from "../views/SearchPage.vue"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -140,7 +141,13 @@ const router = createRouter({
       name : 'commodityPage',
       component : CommodityPage,
       props  : true
-    }
+    },
+    {
+      path: '/search-page:keyword',
+      name: 'search-page',
+      component: SearchPageView,
+      props:true
+    },
   ]
 })
 

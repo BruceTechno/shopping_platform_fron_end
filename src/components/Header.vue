@@ -33,6 +33,19 @@ export default {
             } else {
                 next();
             }
+        },
+        search() {
+            console.log(this.inputText);
+            if (this.inputText == null) {
+                alert("請輸入文字！！");
+                return;
+            }
+            this.$router.push({
+                name: "search-page",
+                params: {
+                    keyword: this.inputText
+                }
+            })
         }
     },
     // mapState => 取的是pinia裡面 state getter的資料           
@@ -42,6 +55,8 @@ export default {
     data() {
         return {
             isLogin: sessionStorage.getItem("isLogin"),
+            inputText: null,
+            keyword: null
         }
     },
 }
@@ -59,8 +74,8 @@ export default {
                 </div>
                 <!-- 搜尋 -->
                 <div class="search-box">
-                    <input type="text" class="input-style">
-                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" class="input-style" v-model="inputText">
+                    <i class="fa-solid fa-magnifying-glass" @click="search"></i>
                 </div>
 
             </div>

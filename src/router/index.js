@@ -17,6 +17,9 @@ import LifeView from "../views/Life.vue"
 import CasualView from "../views/Casual.vue"
 import FoodView from "../views/Food.vue"
 import CommodityPage from "../views/CommodityPage.vue"
+import OrderDetail from "../views/OrderDetail.vue"
+
+OrderDetail
 
 
 const router = createRouter({
@@ -39,6 +42,10 @@ const router = createRouter({
         {
           path: 'orderview',
           component: OrderView
+        },
+        {
+          path :'orderDetail',
+          component : OrderDetail
         }
       ]
     },

@@ -105,10 +105,10 @@ export default {
                                 body: JSON.stringify(body),
                                 credentials: "include"
                             })
-                            .then(res => res.json())
-                            .then(data => {
-                                console.log(data)
-                            })
+                                .then(res => res.json())
+                                .then(data => {
+                                    console.log(data)
+                                })
                         })
                         alert("下單成功")
                         location.href = "/"
@@ -170,15 +170,27 @@ export default {
                 <h3>選擇付款方式</h3>
                 <div class="credit">
                     <input type="radio" name="payway" id="creditcard" value="1" v-model="payway">
-                    <label for="creditcard">信用卡</label>
+                    <label for="creditcard">
+                        信用卡
+                        <i class="fa-brands fa-cc-visa"></i>
+                        <i class="fa-brands fa-cc-mastercard"></i>
+                    </label>
+
                 </div>
                 <div class="atm">
                     <input type="radio" name="payway" id="atm" value="2" v-model="payway">
-                    <label for="atm">ATM轉帳</label>
+                    <label for="atm">
+                        ATM轉帳
+                        <i class="fa-solid fa-money-bill-transfer"></i>
+                    </label>
+
                 </div>
-                <div class="711">
+                <div class="money">
                     <input type="radio" name="payway" id="取貨付款" value="3" v-model="payway">
-                    <label for="取貨付款">取貨付款</label>
+                    <label for="取貨付款">
+                        取貨付款
+                        <i class="fa-solid fa-hand-holding-dollar"></i>
+                    </label>
                 </div>
             </div>
 
@@ -211,6 +223,25 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.credit,
+.atm,
+.money {
+    label,
+    i {
+        font-size: 20px;
+        margin: 0 10px;
+        cursor: pointer;
+        transition: 0.7s;
+        padding: 0 10px;
+        &:hover{
+            background-color: #f5ded4;
+            border-radius: 10px;
+            
+            font-weight: bold;
+        }
+    }
+}
+
 .checloutbox {
     width: 100%;
     height: 100vh;
@@ -261,6 +292,7 @@ export default {
             .imgbox {
                 width: 100px;
                 height: 100px;
+
                 img {
                     width: 100%;
                     height: 100%;
@@ -282,14 +314,12 @@ export default {
         display: flex;
         justify-content: space-between;
         margin-top: 20px;
-
         .payway {
             width: 30%;
             height: 100%;
-            background-color: #C5BABA;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: start;
             justify-content: space-around;
             font-weight: bold;
             border-radius: 10px;

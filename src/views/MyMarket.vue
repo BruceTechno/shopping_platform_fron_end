@@ -1,5 +1,9 @@
 <script>
 import FuctionSelect from "../components/FunctionSelect.vue"
+import {mapActions} from "pinia";
+
+import indexStore from "../stores/indexStore"
+
 export default {
     components: {
         FuctionSelect
@@ -19,6 +23,13 @@ export default {
             ]
         }
     },
+    
+    methods: {
+        ...mapActions(indexStore, ["updateLocation"])
+    },
+    mounted() {
+        this.updateLocation(100);
+    }
 }
 </script>
 
@@ -44,4 +55,6 @@ export default {
         background-color: rgb(253, 253, 253);
     }
 }
+ 
 </style>
+<!-- 0. import 1. ++method and mounted(在這裡給參數值) -->

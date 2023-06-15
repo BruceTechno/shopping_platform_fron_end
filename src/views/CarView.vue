@@ -1,4 +1,6 @@
 <script>
+import {mapActions} from "pinia";
+import indexStore from "../stores/indexStore"
 export default {
     data() {
         return {
@@ -7,9 +9,13 @@ export default {
             selectItem: [],
             money: 0,
             prop: null,
-            src : null
+            src: null
         }
     },
+    // ...mapActions(indexStore, ["updateLocation"])
+
+
+    // 
     mounted() {
         fetch("http://localhost:8080/get_shopping_car_info", {
             credentials: 'include',
@@ -19,14 +25,18 @@ export default {
             .then(data => {
                 console.log(data);
                 this.shopCarList = data.getCommodityInfoList;
-                
+
                 this.shopCarList.forEach(item => {
                     this.moneySum += (+item.price * item.quantity);
-                    item.src =`../../pic/${item.imgPath}.jpg`
+                    item.src = `../../pic/${item.imgPath}.jpg`
                 })
                 console.log(this.shopCarList);
                 console.log(this.moneySum);
-            })
+            }),
+       
+    
+        this.updateLocation(300);
+
 
     },
     methods: {
@@ -114,7 +124,9 @@ export default {
                     propText: this.prop
                 }
             })
-        }
+        },
+        ...mapActions(indexStore, ["updateLocation"])
+
     }
 }
 </script>
@@ -254,9 +266,11 @@ export default {
                     height: 120px;
                     margin-left: 20px;
                     background-color: aqua;
-                    img{
-                        width: 100%;height: 100%;
-                        
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+
                     }
                 }
 

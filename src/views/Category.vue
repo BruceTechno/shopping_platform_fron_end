@@ -6,7 +6,8 @@ export default {
         return {
             title: "分類查詢",
             member: [
-                {
+                {   
+                    index:501,
                     name: "3C產品",
                     to: "/category/computer"
                 },

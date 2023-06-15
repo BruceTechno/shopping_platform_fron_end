@@ -1,5 +1,13 @@
 <script>
+export default {
+    data() {
+        return {
 
+        }
+    },
+
+
+}
 
 </script>
 
@@ -9,5 +17,4 @@
     </div>
 </template>
 
-<style>
-</style>
+<style></style>

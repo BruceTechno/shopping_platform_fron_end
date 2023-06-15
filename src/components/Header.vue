@@ -1,9 +1,32 @@
 <script>
 import { RouterLink } from 'vue-router';
-</script>
+import {mapState, mapActions} from 'pinia';
+import loginStatus from '../stores/loginStatus.js';
 
+export default{
+//    mapActions: 對應loginStatus的actions功能
+    methods:{
+        // "..."要加
+        // mapActions(自己的資料, 要取用的方法)
+        ...mapActions(loginStatus, ["updateLogin", "updateLogout"]),
+        
+        // 登出選項功能
+        Logout(){
+            this.updateLogout()
+        }
+    },
+    computed: {
+        // 取得pinia裡面管理資料的狀態
+        ...mapState(loginStatus, ["getLogin", "isLogin"])
+
+    }
+}
+</script>
+<!-- props更改登出 -->
 <template>
     <header>
+        <p>{{ getLogin }}</p> 
+        <p>{{ isLogin }}</p>
         <div class="wrapper">
             <div class="search-group">
                 <!-- LOGO 回首頁 -->
@@ -33,8 +56,17 @@ import { RouterLink } from 'vue-router';
                 <!-- 註冊/登入 -->
                 <!-- {{ 登出 }} -->
                 <div class="login">
-                    <RouterLink class="link" to="/login">註冊/登入</RouterLink>
+                    <!-- v-if: 沒有登入的狀態下(false)顯示"註冊/登入" -->
+                    <RouterLink class="link" 
+                    v-if="!isLogin" to="/login">註冊/登入</RouterLink>
+
+                    <RouterLink class="link"  @click = "Logout" v-else to="/">登出</RouterLink>
+
                 </div>
+                <div class="logout">
+
+                </div>
+
                 <!-- 購物車 -->
                 <div class="shopping-car">
                     <RouterLink class="link" to="/shopping-car">購物車</RouterLink>

@@ -1,8 +1,12 @@
+<!-- 標籤的事件由loginview來處理 -->
 <script>
+import { mapActions } from "pinia";
 import Info from "../components/LoginMessage.vue";
+import loginStatus from "../stores/loginStatus.js";
+
 export default {
     components:{
-        Info
+        Info,
         
     },
 
@@ -13,19 +17,27 @@ export default {
             pwd: null,
             isLogin: false,
         }
+    },
+
+    computed: {
+        // 取得pinia裡面管理資料的狀態
+        ...mapState(loginStatus, ["isLogin"])
+
     }, 
 
     methods:{
-        login() {
+        ...mapActions(loginStatus, ["updateLogin"]),
 
+        login() {
+            
             const body = {
                 "account": this.account,
                 "pwd": this.pwd,
             }
 
             console.log(body);
-            this.isLogin = !this.isLogin;
-
+            // this.isLogin = !this.isLogin;
+            this.updateLogin();
             // fetch("http://localhost:8080/login", {
 
             //     method:"POST",
@@ -72,6 +84,9 @@ export default {
 
             // })
         }
+    }, 
+    mounted() {
+        this.updateLogin(1)
     }
 }
 
@@ -99,13 +114,14 @@ export default {
         <div class="btn-area">
 
                 <div class="login">
-                    
+
                     <Router-link to="/logout">
                         <button type="button" @click="login">登入</button>
                     </Router-link>
                 </div>
-
-                <Info v-if="isLogin" @outsideWindows="login">
+                
+                <!-- v-bind: 綁定使用者狀態:已登入(true) -->
+                <Info v-if="!isLogin" v-bind="isLogin" @outsideWindows="login">
                 </Info>
 
                 

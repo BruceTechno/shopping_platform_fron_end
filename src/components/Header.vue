@@ -1,17 +1,49 @@
 <script>
 import { RouterLink } from 'vue-router';
-import {mapState,mapActions} from "pinia";
+import { mapState, mapActions } from "pinia";
 import indexStore from "../stores/indexStore"
-export default{
-    methods:{
- // mapActions => 取的是pinia裡面actions的資料       
- // ...為淺層拷貝 //1.自己的資料 2.要取用的方法
-        ...mapActions(indexStore,["updateLocation"])
+export default {
+    methods: {
+        // mapActions => 取的是pinia裡面actions的資料       
+        // ...為淺層拷貝 //1.自己的資料 2.要取用的方法
+        ...mapActions(indexStore, ["updateLocation"]),
+        logOut() {
+
+            let yes = confirm('確定要登出嗎？');
+            if (yes) {
+                let body = {
+
+                }
+                fetch("http://localhost:8080/log_out", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    credentials: 'include',
+                    body: JSON.stringify(body)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        alert("登出成功");
+                        sessionStorage.setItem("isLogin",false);
+                        location.href = "/";
+                    })
+
+            } else {
+                next();
+            }
+        }
     },
-// mapState => 取的是pinia裡面 state getter的資料           
-    computed:{
-        ...mapState(indexStore,["location","getLocation"])
-    }
+    // mapState => 取的是pinia裡面 state getter的資料           
+    computed: {
+        ...mapState(indexStore, ["location", "getLocation"])
+    },
+    data() {
+        return {
+            isLogin: sessionStorage.getItem("isLogin"),
+        }
+    },
 }
 </script>
 
@@ -37,20 +69,26 @@ export default{
             <div class="function-group">
                 <!-- 我的賣場 -->
                 <div class="my-market">
-                    <RouterLink class="link" :class="{local: location > 99 && location <103 }" to="/my-market/orderview">我的賣場</RouterLink>
+                    <RouterLink class="link" :class="{ local: location > 99 && location < 103 }" to="/my-market/orderview">
+                        我的賣場</RouterLink>
                 </div>
                 <!-- 會員中心 -->
                 <div class="member-center">
-                    <RouterLink class="link" :class="{local:location > 199 && location <202}" to="/member-center/userInfo">會員中心</RouterLink>
+                    <RouterLink class="link" :class="{ local: location > 199 && location < 202 }"
+                        to="/member-center/userInfo">
+                        會員中心</RouterLink>
                 </div>
 
                 <!-- 購物車 -->
                 <div class="shopping-car">
-                    <RouterLink class="link" :class="{local:location === 300}" to="/shopping-car/carview"><i class="fa-solid fa-cart-shopping"></i></RouterLink>
+                    <RouterLink class="link" :class="{ local: location === 300 }" to="/shopping-car/carview"><i
+                            class="fa-solid fa-cart-shopping"></i></RouterLink>
                 </div>
                 <!-- 註冊/登入 -->
                 <div class="login">
-                    <RouterLink class="link" :class="{local:location === 400}" to="/login">登入</RouterLink>
+                    <RouterLink v-if="isLogin == 'true'" class="link" :class="{ local: location === 400 }"  @click="logOut" to="" >登出</RouterLink>
+                    <RouterLink v-else class="link" :class="{ local: location === 400 }" to="/login" >登入</RouterLink>
+                   
                 </div>
             </div>
 
@@ -73,6 +111,7 @@ export default{
     justify-content: space-between;
     align-items: end;
     min-width: 1270px;
+
     .function-group {
         display: flex;
     }
@@ -95,11 +134,13 @@ export default{
         .search-box {
             position: relative;
             border: none;
-            i{
+
+            i {
                 border: none;
             }
+
             .input-style {
-                padding: 5px 40px 5px 5px  ;
+                padding: 5px 40px 5px 5px;
                 font-size: 20px;
                 border-radius: 10px;
                 margin-left: 10px;
@@ -164,16 +205,20 @@ header {
     cursor: pointer;
     transition: 0.3s;
     margin: 0 1rem;
-    i{
+
+    i {
         font-size: 25px;
+        padding: 1px 10px;
     }
+
     &:hover {
         color: white;
     }
 }
-.local{
-        color: #41b782;
-        background-color: white;
-        border-radius: 6px;
-    }
+
+.local {
+    border-bottom: white 2px solid;
+    border-radius: 6px;
+    color: white;
+}
 </style>

@@ -6,6 +6,9 @@ export default{
         push() {
             // 觸發自定義事件
             this.$emit("outsideWindows")
+        },
+        home(){
+            location.href = "/"
         }
     },
 }
@@ -20,8 +23,7 @@ export default{
 
         <div class="info-area">    
             <h2>登錄成功!</h2>
-            <RouterLink class="link" to="/">回到主畫面</RouterLink>
-
+            <p @click="home">回到主畫面</p>
             <!-- <i class="fa-solid fa-x" @click="push"></i> -->
             <!-- 退出按鈕 -->
             <!-- <i class="fa-sharp fa-solid fa-circle-xmark" @click="push"></i> -->
@@ -58,7 +60,12 @@ export default{
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            
+            p{
+                font-size: 20px;
+                cursor: pointer;
+                color: blue;
+                text-decoration: dashed;
+            }
             i{
                 position: absolute;
                 top: 10px;

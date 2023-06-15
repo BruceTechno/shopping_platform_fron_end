@@ -3,8 +3,58 @@
 export default {
     data() {
         return {
-            commodityList:[]
+            commodityList: [],
+            number: 0
         }
+    },
+    methods: {
+        detail() {
+            this.$router.push(`/my-market/orderview`)
+        },
+        editComPage(test) {
+            this.$router.push(`/my-market/CommodityEdit/?${test}`)
+
+        },
+        commodityPage(text) {
+            this.$router.push(`/my-market/CommodityEdit`)
+        },
+        addCommodity() {
+            this.$router.push(`/my-market/AddCommodity`)
+        },
+
+        // 刪除商品
+        delCom(number) {
+            // 確認使用者是否要刪除
+            const confirmation = `確定要刪除商品編號${number}?`;
+
+            // 使用 confirm 彈窗顯示確認訊息
+            if (confirm(confirmation)) {
+                // 建立更新資料的物件
+                const del = {
+                    commodityNumber: number,
+                };
+
+                fetch("http://localhost:8080/delete_commodity", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    credentials: 'include',
+                    body: JSON.stringify(del)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
+            }
+        }
+
+
+
+
     },
     mounted() {
 
@@ -24,38 +74,41 @@ export default {
 </script>
 
 <template>
-<div>
-    <div class="list">
-        <table>
-            <tr>
-                <th>商品品名</th>
-                <th>分類</th>
-                <th>價格</th>
-                <th>庫存量</th>
-                <th>
-                    <div class="addBtn">
-                        <button type="button">新增商品</button>
-                    </div>
-                </th>
-                
-            </tr>
-            <tr v-for="comodityInfo in commodityList" :key="comodityInfo.accountSell">
-                <td>{{ comodityInfo.name}}</td>
-                <td>{{ comodityInfo.category }}</td>
-                <td>NT${{ comodityInfo.price}}</td>
-                <td>{{ comodityInfo.inventory}}</td>
-                <td>
-                    <button type="button" @click="">編輯</button>
-                    <button type="button" @click="">刪除</button>
-                </td>
-            </tr>
-        </table>
+    <div>
+
+        <div class="list">
+            <table>
+                <tr>
+                    <th>商品編號</th>
+                    <th>商品品名</th>
+                    <th>分類</th>
+                    <th>單價</th>
+                    <th>庫存量</th>
+                    <th>
+                        <div class="addBtn">
+                            <button type="button" @click="detail">返回訂單查詢</button>
+                            <button type="button" @click="addCommodity">新增商品</button>
+                        </div>
+                    </th>
+
+                </tr>
+                <tr v-for="(comodityInfo, index) in commodityList" :key=index>
+                    <td>{{ comodityInfo.number }}</td>
+                    <td>{{ comodityInfo.name }}</td>
+                    <td>{{ comodityInfo.category }}</td>
+                    <td>NT${{ comodityInfo.price }}</td>
+                    <td>{{ comodityInfo.inventory }}</td>
+                    <td>
+                        <button type="button" @click="editComPage(comodityInfo.number)">編輯</button>
+                        <button type="button" @click="delCom(comodityInfo.number)">刪除</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
-</div>
 </template>
 
 <style lang="scss" scoped>
-
 .list {
     margin: 80px;
     border-radius: 10px;
@@ -67,29 +120,31 @@ table {
     width: 100%;
 }
 
-th, td {
+th,
+td {
     text-align: center;
     padding: 8px;
 }
 
 
-button{
-      border: none;
-      background-color: #403234;
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-      padding: 0 15px;
-      border-radius: 10px;
-      transition: 0.7s;
-      cursor: pointer;
-      margin: 0 20px;
-      &:hover{
-         background-color:#d0cfd0 ;
-      }
-      &:active{
-            scale: 1.05;
-         }
-   }
+button {
+    border: none;
+    background-color: #403234;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 0 15px;
+    border-radius: 10px;
+    transition: 0.7s;
+    cursor: pointer;
+    margin: 0 20px;
 
+    &:hover {
+        background-color: #d0cfd0;
+    }
+
+    &:active {
+        scale: 1.05;
+    }
+}
 </style>

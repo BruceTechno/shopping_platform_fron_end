@@ -10,6 +10,8 @@ import Login from "../views/Login.vue"
 import Checkout from "../views/Checkout.vue"
 import CarView from "../views/CarView.vue"
 import OrderDetail from "../components/OrderDetail.vue"
+import CommodityEdit from "../components/CommodityEdit.vue"
+import AddCommodity from "../components/AddCommodity.vue"
 
 
 const router = createRouter({
@@ -27,7 +29,7 @@ const router = createRouter({
       children: [
         {
           path: 'commodity',
-          component: CommodityView
+          component: CommodityView,
         },
         {
           path: 'orderview',
@@ -38,7 +40,16 @@ const router = createRouter({
           path: 'orderDetail',
           component: OrderDetail,
           
+        },
+        {
+          path: 'CommodityEdit',
+          component: CommodityEdit,
+        },
+        {
+          path: 'addCommodity',
+          component: AddCommodity,
         }
+
       ]
     },
     {

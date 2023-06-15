@@ -9,9 +9,19 @@ import ShopCar from "../views/ShopCar.vue"
 import Login from "../views/Login.vue"
 import Checkout from "../views/Checkout.vue"
 import CarView from "../views/CarView.vue"
-import OrderDetail from "../components/OrderDetail.vue"
-import CommodityEdit from "../components/CommodityEdit.vue"
-import AddCommodity from "../components/AddCommodity.vue"
+import OrderInfoView from "../views/OrderInfo.vue"
+import CategoryView from "../views/Category.vue"
+import ComputerView from "../views/Computer.vue"
+import AccessoriesView from "../views/Accessories.vue"
+import LifeView from "../views/Life.vue"
+import CasualView from "../views/Casual.vue"
+import FoodView from "../views/Food.vue"
+import CommodityPage from "../views/CommodityPage.vue"
+import OrderDetail from "../views/OrderDetail.vue"
+import OrderDetailUser from "../views/OrderDetailUser.vue"
+import SearchPageView from "../views/SearchPage.vue"
+
+
 
 
 const router = createRouter({
@@ -29,27 +39,16 @@ const router = createRouter({
       children: [
         {
           path: 'commodity',
-          component: CommodityView,
+          component: CommodityView
         },
         {
           path: 'orderview',
-          component: OrderView,
-          
+          component: OrderView
         },
         {
-          path: 'orderDetail',
-          component: OrderDetail,
-          
-        },
-        {
-          path: 'CommodityEdit',
-          component: CommodityEdit,
-        },
-        {
-          path: 'addCommodity',
-          component: AddCommodity,
+          path :'orderDetail',
+          component : OrderDetail
         }
-
       ]
     },
     {
@@ -60,6 +59,14 @@ const router = createRouter({
         {
           path: 'userInfo',
           component: UserInfoView
+        },
+        {
+          path: 'orderInfo',
+          component: OrderInfoView
+        },
+        {
+          path:'orderDetailUser',
+          component : OrderDetailUser
         }
       ]
     },
@@ -83,27 +90,51 @@ const router = createRouter({
     {
       path: '/category',
       name: 'category',
+      component : CategoryView,
       children: [
         {
-          path: 'c1'
+          path: 'computer',
+          component : ComputerView
         },
         {
-          path: 'c2'
+          path: 'accessories',
+          component : AccessoriesView
         },
         {
-          path: 'c3'
+          path: 'life',
+          component : LifeView
         },
         {
-          path: 'c4'
-        }
+          path: 'casual',
+          component :CasualView
+        },
+        {
+          path:'food',
+          component : FoodView
+        },
+        
       ]
     },
     {
-      path : '/orderview',
+      path : '/checkout:propText',
       name :'checkout',
       component : Checkout,
       props : true
-    }
+    },
+    {
+      path :'/commodityPage:number',
+      name : 'commodityPage',
+      component : CommodityPage,
+      props  : true
+    },
+
+    {
+      path: '/search-page:keyword',
+      name: 'search-page',
+      component: SearchPageView,
+      props:true
+    },
+
   ]
 })
 

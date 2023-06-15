@@ -1,5 +1,41 @@
 <script>
 import { RouterLink } from 'vue-router';
+import { mapState, mapActions } from "pinia";
+import indexStore from "../stores/indexStore"
+export default {
+
+    data() {
+        return {
+            inputText: null,
+            keyword: null
+        }
+    },
+    methods: {
+        // mapActions => 取的是pinia裡面actions的資料       
+        // ...為淺層拷貝 //1.自己的資料 2.要取用的方法
+        ...mapActions(indexStore, ["updateLocation"]),
+
+
+        // 搜尋功能 ->改成跳轉頁面props cardview 再拿keyword出來！！！
+        search() {
+            console.log(this.inputText);
+            if (this.inputText == null) {
+                alert("請輸入文字！！");
+                return;
+            }
+            this.$router.push({
+                name: "search-page",
+                params: {
+                    keyword: this.inputText
+                }
+            })
+        }
+    },
+    // mapState => 取的是pinia裡面 state getter的資料           
+    computed: {
+        ...mapState(indexStore, ["location", "getLocation"])
+    }
+}
 </script>
 
 <template>
@@ -14,8 +50,8 @@ import { RouterLink } from 'vue-router';
                 </div>
                 <!-- 搜尋 -->
                 <div class="search-box">
-                    <input type="text" class="input-style">
-                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" class="input-style" v-model="inputText">
+                    <i class="fa-solid fa-magnifying-glass" @click="search"></i>
                 </div>
 
             </div>
@@ -24,32 +60,37 @@ import { RouterLink } from 'vue-router';
             <div class="function-group">
                 <!-- 我的賣場 -->
                 <div class="my-market">
-                    <RouterLink class="link" to="/my-market/orderview">我的賣場</RouterLink>
+                    <RouterLink class="link" :class="{ local: location > 99 && location < 103 }" to="/my-market/orderview">
+                        我的賣場</RouterLink>
                 </div>
                 <!-- 會員中心 -->
                 <div class="member-center">
-                    <RouterLink class="link" to="/member-center/userInfo">會員中心</RouterLink>
+                    <RouterLink class="link" :class="{ local: location > 199 && location < 202 }"
+                        to="/member-center/userInfo">
+                        會員中心</RouterLink>
                 </div>
 
                 <!-- 購物車 -->
                 <div class="shopping-car">
-                    <RouterLink class="link" to="/shopping-car/carview"><i class="fa-solid fa-cart-shopping"></i></RouterLink>
+                    <RouterLink class="link" :class="{ local: location === 300 }" to="/shopping-car/carview"><i
+                            class="fa-solid fa-cart-shopping"></i></RouterLink>
                 </div>
                 <!-- 註冊/登入 -->
                 <div class="login">
-                    <RouterLink class="link" to="/login">登入</RouterLink>
+                    <RouterLink class="link" :class="{ local: location === 400 }" to="/login">登入</RouterLink>
                 </div>
             </div>
 
 
         </div>
         <div class="category">
-            <RouterLink class="category-link" to="/category/c1">3C產品</RouterLink>
-            <RouterLink class="category-link" to="/category/c2">配件飾品</RouterLink>
-            <RouterLink class="category-link" to="/category/c3">居家生活</RouterLink>
-            <RouterLink class="category-link" to="/category/c4">休閒用品</RouterLink>
-            <RouterLink class="category-link" to="/category">所有分類</RouterLink>
+            <RouterLink class="category-link" to="/category/computer">3C產品</RouterLink>
+            <RouterLink class="category-link" to="/category/accessories">配件飾品</RouterLink>
+            <RouterLink class="category-link" to="/category/life">居家生活</RouterLink>
+            <RouterLink class="category-link" to="/category/casual">休閒用品</RouterLink>
+            <RouterLink class="category-link" to="/category/food">美食廣場</RouterLink>
         </div>
+
     </header>
 </template>
 
@@ -60,6 +101,7 @@ import { RouterLink } from 'vue-router';
     justify-content: space-between;
     align-items: end;
     min-width: 1270px;
+
     .function-group {
         display: flex;
     }
@@ -75,18 +117,20 @@ import { RouterLink } from 'vue-router';
 
             img {
                 width: 100%;
-                
+
             }
         }
 
         .search-box {
             position: relative;
             border: none;
-            i{
+
+            i {
                 border: none;
             }
+
             .input-style {
-                padding: 5px 40px 5px 5px  ;
+                padding: 5px 40px 5px 5px;
                 font-size: 20px;
                 border-radius: 10px;
                 border: none;
@@ -150,10 +194,20 @@ header {
     cursor: pointer;
     transition: 0.3s;
     margin: 0 1rem;
-    i{
+
+    i {
         font-size: 25px;
     }
+
     &:hover {
         color: white;
     }
-}</style>
+}
+
+.local {
+    color: #37474F;
+    // background-color: #AABEC3;
+    // border-radius: 6px;
+    font-weight: bolder;
+}
+</style>

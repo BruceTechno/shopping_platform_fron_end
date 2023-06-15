@@ -57,10 +57,9 @@ export default{
                 <!-- {{ 登出 }} -->
                 <div class="login">
                     <!-- v-if: 沒有登入的狀態下(false)顯示"註冊/登入" -->
-                    <RouterLink class="link" 
-                    v-if="!isLogin" to="/login">註冊/登入</RouterLink>
+                    <RouterLink class="link" v-if="!isLogin" to="/login">註冊/登入</RouterLink>
 
-                    <RouterLink class="link"  @click = "Logout" v-else to="/">登出</RouterLink>
+                    <RouterLink class="link"  @click = "Logout" v-if="isLogin" to="/">登出</RouterLink>
 
                 </div>
                 <div class="logout">

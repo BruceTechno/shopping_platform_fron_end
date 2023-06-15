@@ -1,5 +1,6 @@
 <script>
 import LoginView from '../views/LoginView.vue';
+import LogoutView from '../views/LogoutView.vue';
 
 export default{
     methods: {
@@ -28,7 +29,8 @@ export default{
             <!-- 退出按鈕 -->
             <i class="fa-sharp fa-solid fa-circle-xmark" @click="push"></i>
             
-            <LoginView></LoginView>
+            <!-- <LoginView></LoginView> -->
+            <LogoutView></LogoutView>
         </div>
 
         <!-- 開視窗後背景 -->

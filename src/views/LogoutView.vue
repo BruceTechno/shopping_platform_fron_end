@@ -1,8 +1,9 @@
 <script>
 import Info from "../components/LoginMessage.vue";
+
 export default {
     components:{
-        Info
+        // Info,
         
     },
 

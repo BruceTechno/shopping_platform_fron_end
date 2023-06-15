@@ -19,8 +19,9 @@ import FoodView from "../views/Food.vue"
 import CommodityPage from "../views/CommodityPage.vue"
 import OrderDetail from "../views/OrderDetail.vue"
 import OrderDetailUser from "../views/OrderDetailUser.vue"
-
-
+import AddCommodity from "../views/AddCommodity.vue"
+import CommodityEdit from "../views/CommodityEdit.vue"
+import { compile } from 'vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -31,6 +32,8 @@ const router = createRouter({
       component: HomeView
     },
     {
+// AddCommodity CommodityEdit
+
       path: '/my-market',
       name: 'my-market',
       component: MyMarketView,
@@ -46,6 +49,14 @@ const router = createRouter({
         {
           path :'orderDetail',
           component : OrderDetail
+        },
+        {
+          path:'AddCommodity',
+          component : AddCommodity
+        },
+        {
+          path : 'CommodityEdit',
+          component : CommodityEdit
         }
       ]
     },

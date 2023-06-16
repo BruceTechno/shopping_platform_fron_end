@@ -76,9 +76,11 @@ export default {
             })
             console.log(this.moneySum);
         },
-        del(name, number) {
+        del(name, number,price) {
             console.log(name);
             console.log(number)
+            const quantity = document.getElementById(number).value;
+            console.log(quantity);
             this.shopCarList = this.shopCarList.filter(item => {
                 return item.name !== name;
             })
@@ -98,6 +100,9 @@ export default {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
+                if(data.message == "Successful!!"){
+                    this.money -= ( +price* quantity);
+                }
             })
         },
         checkout() {
@@ -178,7 +183,7 @@ export default {
                         </div>
 
                         <div class="cancel">
-                            <i class="fa-solid fa-xmark" @click="del(item.name,item.commodityNumber)"></i>
+                            <i class="fa-solid fa-xmark" @click="del(item.name,item.commodityNumber,item.price)"></i>
                         </div>
 
                     </div>

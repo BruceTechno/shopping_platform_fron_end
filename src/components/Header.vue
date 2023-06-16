@@ -46,7 +46,9 @@ export default {
                     keyword: this.inputText
                 }
             })
-        }
+            // location.href = `/search-page?${this.inputText}`
+         },
+        
     },
     // mapState => 取的是pinia裡面 state getter的資料           
     computed: {
@@ -75,7 +77,7 @@ export default {
                 <!-- 搜尋 -->
                 <div class="search-box">
                     <input type="text" class="input-style" v-model="inputText">
-                    <i class="fa-solid fa-magnifying-glass" @click="search"></i>
+                    <i class="fa-solid fa-magnifying-glass" @click="search"  ></i>
                 </div>
 
             </div>

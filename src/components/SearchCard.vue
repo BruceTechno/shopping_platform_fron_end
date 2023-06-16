@@ -7,8 +7,11 @@ export default{
         }
     },
 
-    
     mounted() {
+        let url = window.location.search;
+            let str = url.substring(url.indexOf("?") + 1);
+         console.log(str);
+
         let body = {
             keyword: this.keyword,
         }
@@ -24,8 +27,9 @@ export default{
         .then(data => {
             console.log(data);
             this.commodity = data.distinctSearchResponseList;
-          
+            
         })
+      
     },
     props:["keyword"],
     methods :{
@@ -38,12 +42,15 @@ export default{
                 }
             })
         },
+        reload(){
+            location.reload();
+        }
     }
 }
 </script>
 
 <template>
-    <div v-for="item in commodity" class="product-card">
+    <div v-for="item in commodity" class="product-card" @change="reload">
         <div class="linkbox" @click="comPage(item.number)">
             <div class="imgbox">
                 <img v-bind:src="`../../pic/${item.imgPath}.jpg`" alt="pic">

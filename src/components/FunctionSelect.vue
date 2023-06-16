@@ -46,11 +46,9 @@ export default {
     }
 }
 .local{
-        color: #E2C2B3!important;
+        color: #FF4858!important;
         font-size: 20px;
-        font-weight: bold;
-        background-color: white;
-        border-radius: 6px;
+        font-weight: bold; 
        
     }
 </style>

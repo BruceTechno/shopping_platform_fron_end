@@ -45,6 +45,12 @@ export default {
     props:["keyword"],
     mounted(){
         // console.log(this.keyword);
+    },
+    methods:{
+        
+    },
+    beforeUpdate(){
+        location.reload();
     }
      
     
@@ -52,10 +58,12 @@ export default {
 </script>
 
 <template>
+    <h2 >搜尋結果:{{ keyword }}</h2>
     <div class="category-group">
         <FunctionSelect :title="title" :member="member"/>
+        
         <div class="category-box">
-            <h2>搜尋結果:{{ keyword }}</h2>
+            
             <SearchCard :keyword="keyword" />
          
         </div>
@@ -67,5 +75,17 @@ export default {
 
 .category-group{
     display: flex;
+}
+.category-box{
+    height: 90vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: 250px 250px 250px 250px;
+    grid-template-rows: auto;
+}
+h2{
+    margin: 0 12rem;
+    font-size: 28px;
 }
 </style>

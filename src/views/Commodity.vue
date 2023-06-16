@@ -1,5 +1,6 @@
 <script>
-
+import {mapActions} from "pinia";
+import indexStore from "../stores/indexStore"
 export default {
     data() {
         return {
@@ -50,9 +51,9 @@ export default {
                         console.error(error);
                     });
             }
-        }
+        },
 
-
+        ...mapActions(indexStore, ["updateLocation"])
 
 
     },
@@ -67,7 +68,9 @@ export default {
                 console.log(data);
                 this.commodityList = data.commodityList;
 
-            })
+            }),
+            this.updateLocation(102);
+
     }
 }
 

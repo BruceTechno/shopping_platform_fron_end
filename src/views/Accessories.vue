@@ -8,7 +8,7 @@ export default {
     },
     data() {
         return {
-            category : "飾品配件"
+            category : "配件飾品"
         }
     },
     methods: {

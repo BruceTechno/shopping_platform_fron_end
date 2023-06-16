@@ -19,7 +19,7 @@ export default{
 
         <div class="info-area">    
             <h2>註冊成功</h2>
-            <RouterLink class="link" to="/">回到主畫面</RouterLink>
+            <RouterLink class="link" to="/login">返回登入</RouterLink>
 
             <!-- <i class="fa-solid fa-x" @click="push"></i> -->
             <!-- 退出按鈕 -->

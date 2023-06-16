@@ -148,7 +148,6 @@ export default {
                         <p>電話
                             <input type="tel" v-model="phone">
                         </p>
-                        <p>ex : 0912-345678</p>
                     </div>
 
                 </div>

@@ -57,6 +57,7 @@ export default {
                     })
 
             };
+            location.href = "/my-market/commodity";
 
         },
 

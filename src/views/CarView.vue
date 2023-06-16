@@ -76,12 +76,29 @@ export default {
             })
             console.log(this.moneySum);
         },
-        del(name) {
+        del(name, number) {
             console.log(name);
+            console.log(number)
             this.shopCarList = this.shopCarList.filter(item => {
                 return item.name !== name;
             })
             console.log(this.shopCarList);
+
+            let body = {
+                commodityNumber : number
+            }
+            fetch("http://localhost:8080/dele_Commodity_FromCart", {
+                method: "POST",
+                 headers: {
+                    "Content-Type": "application/json",
+                },
+                 credentials: 'include',
+                body: JSON.stringify(body)
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
         },
         checkout() {
             let comNumber = [];
@@ -161,7 +178,7 @@ export default {
                         </div>
 
                         <div class="cancel">
-                            <i class="fa-solid fa-xmark" @click="del(item.name)"></i>
+                            <i class="fa-solid fa-xmark" @click="del(item.name,item.commodityNumber)"></i>
                         </div>
 
                     </div>

@@ -51,6 +51,7 @@ export default {
                         console.error(error);
                     });
             }
+            location.href = "/my-market/commodity"
         },
 
         ...mapActions(indexStore, ["updateLocation"])
@@ -71,6 +72,9 @@ export default {
             }),
             this.updateLocation(102);
 
+    },
+    beforeUpdate(){
+        this.updateLocation(102);
     }
 }
 

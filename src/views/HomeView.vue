@@ -72,6 +72,7 @@ export default {
             <span class="visually-hidden">Next</span>
         </button>
     </div>
+    
     <div class="title-box">
         <h2>熱賣商品</h2>
     </div>
@@ -100,11 +101,12 @@ export default {
 <style lang="scss" scoped>
 #carouselExampleIndicators {
     width: 100%;
+   margin: 1.5rem 0;
 }
 
 .carousel-item {
     img {
-        height: 300px;
+        height: 500px;
     }
 }
 

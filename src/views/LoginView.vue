@@ -66,6 +66,7 @@ export default {
                     console.log(data);
                     this.isLogin = !this.isLogin;
                     sessionStorage.setItem("isLogin",true);
+                    sessionStorage.setItem("account",data.user.account)
                 })
 
         }

@@ -45,7 +45,7 @@
 
 
 .wrapper {
-    width: 100vw;
+    width: 100%;
     height: 180px;
     margin-top:50px ;
     background-color: #E2C2B3;

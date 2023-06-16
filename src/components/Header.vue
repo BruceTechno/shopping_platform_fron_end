@@ -58,7 +58,8 @@ export default {
         return {
             isLogin: sessionStorage.getItem("isLogin"),
             inputText: null,
-            keyword: null
+            keyword: null,
+            account : sessionStorage.getItem("account")
         }
     },
 }
@@ -102,7 +103,9 @@ export default {
                             class="fa-solid fa-cart-shopping"></i></RouterLink>
                 </div>
                 <!-- 註冊/登入 -->
+                <p v-if="isLogin == 'true'" class="Hi">Hi  {{ account }}</p>
                 <div class="login">
+                    
                     <RouterLink v-if="isLogin == 'true'" class="link" :class="{ local: location === 400 }"  @click="logOut" to="" >登出</RouterLink>
                     <RouterLink v-else class="link" :class="{ local: location === 400 }" to="/login" >登入</RouterLink>
                    
@@ -185,13 +188,13 @@ export default {
 }
 
 header {
-    width: 100vw;
+    width: 100%;
     background-color: #E2C2B3;
     font-size: 20px;
     min-width: 1270px;
 
     .category {
-        width: 100vw;
+        width: inherit;
         min-width: 1270px;
         padding: 10px 0;
         display: flex;
@@ -229,13 +232,23 @@ header {
     }
 
     &:hover {
-        color: white;
+        color: black;
+        font-weight: bold;
     }
 }
 
 .local {
-    border-bottom: white 2px solid;
+    // border-bottom: white 2px solid;
     border-radius: 6px;
-    color: white;
+    color: black;
+        font-weight: bold;
+}
+.Hi{
+    text-decoration: none;
+    color: #687477;
+   padding: 0;
+     font-weight: bold;
+    margin: 0 1rem;
+    text-align: center;
 }
 </style>

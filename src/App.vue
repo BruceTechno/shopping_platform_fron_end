@@ -30,7 +30,7 @@ body{
 }
 .showData{
     width: 80vw;
-    height: 100vh;
+    height: auto;
     margin: 0 auto;
 }
 </style>

@@ -1,6 +1,7 @@
 <script>
 import { mapActions } from "pinia";
 import indexStore from "../stores/indexStore"
+import { main } from "@popperjs/core";
 export default {
     data() {
         return {
@@ -54,11 +55,16 @@ export default {
                 }
             })
         },
-        test2(name, number) {
+        test2(name, number,index) {
             let dom = document.getElementById(`${number}`);
             let checked = document.getElementById(`${name}`).checked;
-            console.log(checked);
             let quantity = +dom.value;
+            if(quantity < 0 ){
+               alert("不可輸入小於0的數字");
+               this.shopCarList[index].quantity = 0 ;
+               dom.value = 0 ;
+               return;
+            }
             this.moneySum = 0;
             this.shopCarList.forEach(item => {
                 if (item.commodityNumber === number) {
@@ -146,7 +152,7 @@ export default {
                 }
             })
         },
-        ...mapActions(indexStore, ["updateLocation"])
+        ...mapActions(indexStore, ["updateLocation"]),
 
     }
 }
@@ -174,7 +180,7 @@ export default {
                                 <h2>{{ item.name }}</h2>
                                 <!-- @change="test2(item.name, item.commodityNumber)" -->
                                 <input :id="item.commodityNumber" type="number" v-bind:value="item.quantity"
-                                    @change="test2(item.name, item.commodityNumber)">
+                                    @change="test2(item.name, item.commodityNumber,index)" min="0" v-on:input="changeCheck">
                                 <p>${{ item.price }}</p>
                             </div>
                         </div>

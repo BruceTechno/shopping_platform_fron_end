@@ -31,7 +31,11 @@ export default {
     },
     methods: {
         inCar(number) {
-            console.log(number);
+            console.log(this.comQuantity);
+            if(this.comQuantity <= 0){
+                alert("數量不可等於0");
+                return;
+            }
             let body = {
                 commodityNumber: number,
                 quantity: this.comQuantity
@@ -68,6 +72,13 @@ export default {
             if (+this.comQuantity > 10) {
                 this.changeInput = true;
             }
+        },
+        checkAge(){
+            console.log("1")
+            if (this.comQuantity < 0) {
+                alert("數量不可小於0");
+                this.comQuantity = 0;
+            }
         }
     },
 }
@@ -96,7 +107,7 @@ export default {
             <div class="qty-and-select">
                 <span class="qty">數量</span>
                 <br>
-                <input v-if="changeInput" type="number" v-model="comQuantity">
+                <input v-if="changeInput" v-on:input="checkAge" type="number" v-model="comQuantity" min="0">
                 <select v-else name="" id="quantity" class="form-select" v-model="comQuantity" @change="tessst">
                     <option value="1">1</option>
                     <option value="2">2</option>

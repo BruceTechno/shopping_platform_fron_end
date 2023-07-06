@@ -72,7 +72,7 @@ export default {
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-    
+
     <div class="title-box">
         <h2>熱賣商品</h2>
     </div>
@@ -86,7 +86,9 @@ export default {
                     <img v-bind:src="`../../pic/${item.imgPath}.jpg`" alt="pic">
                 </div>
                 <div class="word-box">
-                    <h2>{{ item.name }}</h2>
+                    <h2>
+                        <p class="overflow-test">{{ item.name }}</p>
+                    </h2>
                 </div>
             </div>
 
@@ -99,9 +101,20 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.overflow-test {
+    width: 200px;
+    height: 55px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    box-sizing: border-box;
+}
+
 #carouselExampleIndicators {
     width: 100%;
-   margin: 1.5rem 0;
+    margin: 1.5rem 0;
 }
 
 .carousel-item {
@@ -163,4 +176,5 @@ export default {
     text-align: center;
     font-size: 24px;
     margin-top: 16px;
-}</style>
+}
+</style>

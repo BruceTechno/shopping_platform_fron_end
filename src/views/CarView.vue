@@ -55,15 +55,16 @@ export default {
                 }
             })
         },
-        test2(name, number,index) {
+        test2(name, number, index, sum) {
+            console.log(sum)
             let dom = document.getElementById(`${number}`);
             let checked = document.getElementById(`${name}`).checked;
             let quantity = +dom.value;
-            if(quantity < 0 ){
-               alert("不可輸入小於0的數字");
-               this.shopCarList[index].quantity = 0 ;
-               dom.value = 0 ;
-               return;
+            if (quantity < 0) {
+                alert("不可輸入小於0的數字");
+                this.shopCarList[index].quantity = 0;
+                dom.value = 0;
+                return;
             }
             this.moneySum = 0;
             this.shopCarList.forEach(item => {
@@ -89,32 +90,37 @@ export default {
             console.log(quantity);
 
             console.log(this.shopCarList);
-            let body = {
-                commodityNumber: number
-            }
-            fetch("http://localhost:8080/dele_Commodity_FromCart", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                credentials: 'include',
-                body: JSON.stringify(body)
-            })
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data);
-                    if (data.message == "Successful!!") {
-                        this.selectItem.forEach(item => {
-                            if (item == name) {
-                                this.money -= (+price * quantity);
-                            }
-                        })
-
-                        this.shopCarList = this.shopCarList.filter(item => {
-                            return item.name !== name;
-                        })
-                    }
+            var yes = confirm('你確定嗎？');
+            if (yes) {
+                let body = {
+                    commodityNumber: number
+                }
+                fetch("http://localhost:8080/dele_Commodity_FromCart", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    credentials: 'include',
+                    body: JSON.stringify(body)
                 })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.message == "Successful!!") {
+                            alert("刪除成功")
+                            this.selectItem.forEach(item => {
+                                if (item == name) {
+                                    this.money -= (+price * quantity);
+                                }
+                            })
+
+                            this.shopCarList = this.shopCarList.filter(item => {
+                                return item.name !== name;
+                            })
+                        }
+                    })
+            }
+
         },
         checkout() {
             let comNumber = [];
@@ -179,8 +185,8 @@ export default {
                                 <h2>商品</h2>
                                 <h2>{{ item.name }}</h2>
                                 <!-- @change="test2(item.name, item.commodityNumber)" -->
-                                <input :id="item.commodityNumber" type="number" v-bind:value="item.quantity"
-                                    @change="test2(item.name, item.commodityNumber,index)" min="0" v-on:input="changeCheck">
+                                <input :id="item.commodityNumber" type="number" v-bind:value="item.quantity" @change="test2(item.name, item.commodityNumber, index, item.quantity
+                                )" min="0" v-on:input="changeCheck">
                                 <p>${{ item.price }}</p>
                             </div>
                         </div>
@@ -406,4 +412,5 @@ export default {
             }
         }
     }
-}</style>
+}
+</style>
